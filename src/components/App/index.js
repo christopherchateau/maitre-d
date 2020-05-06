@@ -1,6 +1,14 @@
 import React from 'react'
-import './App.css'
+import styled from 'styled-components'
 
-const App = () => <div className='App'></div>
+const App = () => (
+	<AppTheme>
+		<div className='App'></div>
+	</AppTheme>
+)
 
 export default App
+
+const AppTheme = styled.div`
+    height: 100vh;
+`
