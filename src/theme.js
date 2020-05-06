@@ -16,11 +16,14 @@ export default {
 			small: '.8rem',
 			medium: '1rem',
 			large: '1.6rem',
-			xlarge: '2.2rem',
+			xlarge: '2.8rem',
 		},
 		weight: {
 			regular: '400',
 			bold: '700',
 		},
+	},
+	layout: {
+		maxwidth: '1200px',
 	},
 }
