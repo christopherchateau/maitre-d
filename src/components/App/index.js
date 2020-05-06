@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import Controls from '../Controls'
+import Restaurants from '../Restaurants'
 
 const App = () => (
 	<AppTheme>
 		<h1 className='title'>maître d'</h1>
         <Controls />
+        <Restaurants />
 	</AppTheme>
 )
 
