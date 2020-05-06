@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
+import { getRestaurants } from '../utilities/apiCalls'
 
 export const DataContext = createContext()
 
@@ -10,7 +11,7 @@ const DataContextProvider = props => {
 	}, [])
 
 	const loadData = async () => {
-		setData(await getData())
+        setData(await getRestaurants())
 	}
 
 	return (
