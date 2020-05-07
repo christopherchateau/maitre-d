@@ -17,6 +17,7 @@ const Controls = () => {
 				type='text'
 				placeholder='search...'
 			/>
+			<button className='search-btn'>search</button>
 		</ControlsTheme>
 	)
 }
@@ -25,7 +26,15 @@ export default Controls
 
 const ControlsTheme = styled.form`
 	background: ${props => props.theme.color.white};
-	height: 3.6rem;
-	width: 80%;
 	max-width: ${props => props.theme.layout.maxwidth};
+	padding: ${props => props.theme.spacing.medium};
+	width: 80%;
+
+	.search-input {
+		font-size: ${props => props.theme.font.size.large};
+	}
+
+	.search-btn {
+		font-size: ${props => props.theme.font.size.large};
+	}
 `
