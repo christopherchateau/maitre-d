@@ -11,6 +11,6 @@ export default Restaurants
 const RestaurantsTheme = styled.div`
     background: ${props => props.theme.color.white};
     height: 6rem;
-    width: 80%;
+    width: 90%;
     max-width: ${props => props.theme.layout.maxwidth};
 `

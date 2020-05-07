@@ -18,7 +18,6 @@ const MainPageTheme = styled.div`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	height: 30rem;
 	justify-content: space-between;
-	width: 100%;
+	padding: 2rem;
 `

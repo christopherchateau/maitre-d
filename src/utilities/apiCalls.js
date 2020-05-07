@@ -1,4 +1,5 @@
 import apiKey from '../apiKey'
+import { formatFetchedData as format } from './helper'
 
 const endpoint = 'https://code-challenge.spectrumtoolbox.com/api'
 
@@ -7,13 +8,15 @@ export const getData = async path => {
 		const response = await fetch(`${endpoint}/${path}`, {
 			headers: { Authorization: apiKey },
 		})
-		return await response.json()
+		return format(await response.json())
 	} catch {
 		return { errors: ['Data failed to load'] }
 	}
 }
 
-export const getMockRestaurants = () => [
+export const getMockRestaurants = () => format(mockData)
+
+const mockData = [
 	{
 		id: 'f223fdd0-4adc-423e-9747-980a66c256ca',
 		name: 'Old Hickory Steakhouse',

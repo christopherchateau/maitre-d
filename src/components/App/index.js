@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { RestaurantsContext } from '../../contexts/RestaurantsContext'
+import { DataContext } from '../../contexts/DataContext'
 import Errors from '../Errors'
 import Loading from '../Loading'
 import MainPage from '../MainPage'
 
 const App = () => {
-	const { loading, errors } = useContext(RestaurantsContext)
+	const { loading, errors } = useContext(DataContext)
 
 	return (
 		<AppTheme>
@@ -18,11 +18,14 @@ const App = () => {
 export default App
 
 const AppTheme = styled.div`
+	* {
+		box-sizing: border-box;
+	}
+
 	align-items: center;
 	background: ${props => props.theme.color.lightgrey};
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	justify-content: center;
-	padding: 3rem;
+	min-height: 100vh;
 `
