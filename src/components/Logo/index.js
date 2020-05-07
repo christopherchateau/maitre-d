@@ -12,16 +12,16 @@ const Logo = () => (
 export default Logo
 
 const LogoTheme = styled.h1`
-    font-family: ${props => props.theme.font.family};
-    font-size: ${props => props.theme.font.size.xlarge};
-    font-weight: ${props => props.theme.font.weight.light};
-    margin: 0;
-    position: relative;
-    
-    img {
-        height: 3rem;
-        margin-left: ${props => props.theme.spacing.small};
-        position: absolute;
-        top: ${props => props.theme.spacing.small};
-    }
+	font-family: ${props => props.theme.font.family};
+	font-size: ${props => props.theme.font.size.xlarge};
+	font-weight: ${props => props.theme.font.weight.light};
+	margin: 0;
+	position: relative;
+
+	img {
+		height: 3rem;
+		margin-left: ${props => props.theme.spacing.small};
+		position: absolute;
+		top: ${props => props.theme.spacing.small};
+	}
 `
