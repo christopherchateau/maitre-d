@@ -1,14 +1,10 @@
 export const formatFetchedData = data => {
 	data.forEach(item => {
-
-		Object.keys(item).map(key => {
-			if (/,/.test(item[key])) {
-				item[key] = item[key].split(',')
-			}
-		})
+		Object.keys(item).map(key => (item[key] = item[key].split(',')))
 	})
 
-	return sortByName(data)
+	return sortByKey(data, 'name')
 }
 
-const sortByName = input => input.sort((a, b) => (a.name < b.name ? -1 : 1))
+export const sortByKey = (data, key = 'key') =>
+	data.sort((a, b) => (a[key] < b[key] ? -1 : 1))
