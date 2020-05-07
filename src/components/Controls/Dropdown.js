@@ -50,7 +50,7 @@ const DropDown = ({ filter }) => {
 
 	return (
 		<DropDownTheme>
-			<h1>{formatValue(filter)}</h1>
+			<h3 className='menu-name'>{formatValue(filter)}</h3>
 			<select
 				onChange={() => setSelectedItem(dropdownRef.current.value)}
 				ref={dropdownRef}
@@ -68,7 +68,7 @@ const DropDownTheme = styled.div`
 	margin-top: ${props => props.theme.spacing.medium};
 	margin-right: ${props => props.theme.spacing.large};
 
-	h1 {
+	.menu-name {
 		font-size: ${props => props.theme.font.size.medium};
 		font-weight: ${props => props.theme.font.weight.light};
 		margin-right: ${props => props.theme.spacing.small};
