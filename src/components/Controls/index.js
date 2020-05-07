@@ -1,29 +1,19 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import Dropdown from './Dropdown'
+import SearchControls from './SearchControls'
 
 const Controls = () => {
-	const [searchInput, setSearchInput] = useState('')
-
-	const presetDropDownMenus = ['state', 'genre', 'attire']
-
-	const handleInputChange = e => {
-		setSearchInput(e.target.value)
-	}
+	const presetDropDownMenus = ['state', 'genre', 'attire', 'zip', 'hours', 'lat', 'long', 'city']
 
 	return (
 		<ControlsTheme>
-			<input
-				onChange={handleInputChange}
-				value={searchInput}
-				className='search-input'
-				type='text'
-				placeholder='search...'
-			/>
-			<button className='search-btn'>search</button>
-			{presetDropDownMenus.map(filter => (
-				<Dropdown {...{ filter }} />
-			))}
+			<SearchControls />
+			<div className='dropdowns'>
+				{presetDropDownMenus.map(filter => (
+					<Dropdown {...{ filter }} />
+				))}
+			</div>
 		</ControlsTheme>
 	)
 }
@@ -35,12 +25,4 @@ const ControlsTheme = styled.form`
 	max-width: ${props => props.theme.layout.maxwidth};
 	padding: ${props => props.theme.spacing.medium};
 	width: 80%;
-
-	.search-input {
-		font-size: ${props => props.theme.font.size.large};
-	}
-
-	.search-btn {
-		font-size: ${props => props.theme.font.size.large};
-	}
 `

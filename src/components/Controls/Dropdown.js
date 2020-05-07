@@ -13,7 +13,6 @@ const DropDown = ({ filter }) => {
 	const generateMenu = () => {
 		const menuItems = []
 		const formattedMenu = restaurants.reduce(
-
 			(formattedMenu, restaurant) => {
 				const values = restaurant[filter]
 
@@ -22,13 +21,14 @@ const DropDown = ({ filter }) => {
 						menuItems.push(value)
 						formattedMenu.push(generateMenuItem(value))
 					}
-                })
+				})
 
 				return formattedMenu
-			}, []
+			},
+			[]
 		)
 
-		return [generateMenuItem('Any'), ...sortByKey(formattedMenu)]
+		return [generateMenuItem('All'), ...sortByKey(formattedMenu)]
 	}
 
 	const generateMenuItem = item => (
@@ -49,4 +49,9 @@ const DropDown = ({ filter }) => {
 
 export default DropDown
 
-const DropDownTheme = styled.select``
+const DropDownTheme = styled.select`
+    font-size: ${props => props.theme.font.size.large};
+    margin-right: ${props => props.theme.spacing.medium};
+    margin-top: ${props => props.theme.spacing.medium};
+    max-width: 10rem;
+`
