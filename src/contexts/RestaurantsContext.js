@@ -6,8 +6,8 @@ export const RestaurantsContext = createContext()
 const RestaurantsContextProvider = props => {
 	const [restaurants, setRestaurants] = useState(null)
 
-	const errors = restaurants && restaurants.errors
 	const loading = !restaurants
+	const errors = restaurants && restaurants.errors
 
 	useEffect(() => {
 		loadData()

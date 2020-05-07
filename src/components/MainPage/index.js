@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import Logo from '../Logo'
 import Controls from '../Controls'
 import Restaurants from '../Restaurants'
 
 const MainPage = () => (
 	<MainPageTheme>
-		<h1 className='title'>maître d'</h1>
+		<Logo />
 		<Controls />
 		<Restaurants />
 	</MainPageTheme>
@@ -19,8 +20,4 @@ const MainPageTheme = styled.div`
 	flex-direction: column;
 	min-height: 100vh;
 	justify-content: space-between;
-
-	.title {
-		font-size: ${props => props.theme.font.size.xlarge};
-	}
 `

@@ -23,8 +23,5 @@ const AppTheme = styled.div`
 	flex-direction: column;
 	min-height: 100vh;
 	justify-content: center;
-
-	.title {
-		font-size: ${props => props.theme.font.size.xlarge};
-	}
+	padding: 3rem;
 `
