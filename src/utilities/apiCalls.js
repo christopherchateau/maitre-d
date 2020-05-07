@@ -1,17 +1,17 @@
-// import apiKey from '../apiKey'
+import apiKey from '../apiKey'
 
-// const endpoint = 'https://code-challenge.spectrumtoolbox.com/api'
+const endpoint = 'https://code-challenge.spectrumtoolbox.com/api'
 
-// export const getData = async path => {
-// 	try {
-// 		const response = await fetch(`${endpoint}/${path}`, {
-// 			headers: { Authorization: apiKey },
-// 		})
-// 		return await response.json()
-// 	} catch {
-// 		return { errors: ['Data failed to load'] }
-// 	}
-// }
+export const getData = async path => {
+	try {
+		const response = await fetch(`${endpoint}/${path}`, {
+			headers: { Authorization: apiKey },
+		})
+		return await response.json()
+	} catch {
+		return { errors: ['Data failed to load'] }
+	}
+}
 
 export const getMockRestaurants = () => [
 	{

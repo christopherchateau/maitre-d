@@ -6,6 +6,7 @@ export const RestaurantsContext = createContext()
 const RestaurantsContextProvider = props => {
 	const [restaurants, setRestaurants] = useState(null)
 
+	const errors = restaurants && restaurants.errors
 	const loading = !restaurants
 
 	useEffect(() => {
@@ -20,7 +21,7 @@ const RestaurantsContextProvider = props => {
 	}
 
 	return (
-		<RestaurantsContext.Provider value={{ restaurants, loading }}>
+		<RestaurantsContext.Provider value={{ loading, errors, restaurants }}>
 			{props.children}
 		</RestaurantsContext.Provider>
 	)

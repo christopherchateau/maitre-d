@@ -1,13 +1,18 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { RestaurantsContext } from '../../contexts/RestaurantsContext'
+import Errors from '../Errors'
 import Loading from '../Loading'
 import MainPage from '../MainPage'
 
 const App = () => {
-	const { restaurants, loading } = useContext(RestaurantsContext)
-    console.log(restaurants, loading)
-	return <AppTheme>{loading ? <Loading /> : <MainPage />}</AppTheme>
+	const { loading, errors } = useContext(RestaurantsContext)
+
+	return (
+		<AppTheme>
+			{loading ? <Loading /> : errors ? <Errors /> : <MainPage />}
+		</AppTheme>
+	)
 }
 
 export default App
