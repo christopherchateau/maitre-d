@@ -12,16 +12,21 @@ export default {
 		white: 'rgb(255,255,255)',
 	},
 	font: {
+		family: 'sans-serif',
 		size: {
 			small: '.8rem',
 			medium: '1rem',
 			large: '1.6rem',
-			xlarge: '2.8rem',
+			xlarge: '3.2rem',
 		},
 		weight: {
+			light: '200',
 			regular: '400',
 			bold: '700',
 		},
+	},
+	spacing: {
+		small: '.4rem'
 	},
 	layout: {
 		maxwidth: '1200px',
