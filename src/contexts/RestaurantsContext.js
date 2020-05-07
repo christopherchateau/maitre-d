@@ -1,10 +1,12 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { getMockRestaurants } from '../utilities/apiCalls'
+import { getData, getMockRestaurants } from '../utilities/apiCalls'
 
 export const RestaurantsContext = createContext()
 
 const RestaurantsContextProvider = props => {
 	const [restaurants, setRestaurants] = useState(null)
+
+	const loading = !restaurants
 
 	useEffect(() => {
 		loadData()
@@ -18,7 +20,7 @@ const RestaurantsContextProvider = props => {
 	}
 
 	return (
-		<RestaurantsContext.Provider value={{ restaurants }}>
+		<RestaurantsContext.Provider value={{ restaurants, loading }}>
 			{props.children}
 		</RestaurantsContext.Provider>
 	)

@@ -1,17 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { RestaurantsContext } from '../../contexts/RestaurantsContext'
 import Loading from '../Loading'
-import Controls from '../Controls'
-import Restaurants from '../Restaurants'
+import MainPage from '../MainPage'
 
-const App = () => (
-	<AppTheme>
-        {/* <Loading /> */}
-		<h1 className='title'>maître d'</h1>
-		<Controls />
-		<Restaurants />
-	</AppTheme>
-)
+const App = () => {
+	const { restaurants, loading } = useContext(RestaurantsContext)
+    console.log(restaurants, loading)
+	return <AppTheme>{loading ? <Loading /> : <MainPage />}</AppTheme>
+}
 
 export default App
 

@@ -1,4 +1,4 @@
-import apiKey from '../apiKey'
+// import apiKey from '../apiKey'
 
 // const endpoint = 'https://code-challenge.spectrumtoolbox.com/api'
 
