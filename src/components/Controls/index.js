@@ -5,6 +5,8 @@ import Dropdown from './Dropdown'
 const Controls = () => {
 	const [searchInput, setSearchInput] = useState('')
 
+	const presetDropDownMenus = ['state', 'genre', 'attire']
+
 	const handleInputChange = e => {
 		setSearchInput(e.target.value)
 	}
@@ -19,7 +21,9 @@ const Controls = () => {
 				placeholder='search...'
 			/>
 			<button className='search-btn'>search</button>
-			<Dropdown />
+			{presetDropDownMenus.map(filter => (
+				<Dropdown {...{ filter }} />
+			))}
 		</ControlsTheme>
 	)
 }
