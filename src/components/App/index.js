@@ -6,8 +6,8 @@ import Restaurants from '../Restaurants'
 const App = () => (
 	<AppTheme>
 		<h1 className='title'>maître d'</h1>
-        <Controls />
-        <Restaurants />
+		<Controls />
+		<Restaurants />
 	</AppTheme>
 )
 

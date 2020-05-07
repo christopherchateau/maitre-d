@@ -1,21 +1,21 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { getMockRestaurants } from '../utilities/apiCalls'
+import { getData } from '../utilities/apiCalls'
 
 export const DataContext = createContext()
 
 const DataContextProvider = props => {
-	const [data, setData] = useState(null)
+	const [restaurants, setRestaurants] = useState(null)
 
 	useEffect(() => {
 		loadData()
 	}, [])
 
 	const loadData = async () => {
-        setData(await getMockRestaurants())
+		setRestaurants(await getData('restaurants'))
 	}
 
 	return (
-		<DataContext.Provider value={{ data }}>
+		<DataContext.Provider value={{ restaurants }}>
 			{props.children}
 		</DataContext.Provider>
 	)
