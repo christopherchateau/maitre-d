@@ -26,7 +26,7 @@ export default {
 		},
 	},
 	spacing: {
-		small: '.2rem'
+		small: '.4rem'
 	},
 	layout: {
 		maxwidth: '1200px',

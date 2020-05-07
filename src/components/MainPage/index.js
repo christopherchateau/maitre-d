@@ -18,6 +18,7 @@ const MainPageTheme = styled.div`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
+	height: 30rem;
 	justify-content: space-between;
+	width: 100%;
 `

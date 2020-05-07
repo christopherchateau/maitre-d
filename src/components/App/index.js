@@ -19,9 +19,10 @@ export default App
 
 const AppTheme = styled.div`
 	align-items: center;
+	background: ${props => props.theme.color.lightgrey};
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
+	height: 100vh;
 	justify-content: center;
 	padding: 3rem;
 `
