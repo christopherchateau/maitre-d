@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App'
-import DataContextProvider from './contexts/DataContext'
+import RestaurantsContextProvider from './contexts/RestaurantsContext'
 import { ThemeProvider } from 'styled-components'
 import theme from './theme.js'
 import * as serviceWorker from './serviceWorker'
@@ -9,11 +9,11 @@ import './index.css'
 
 ReactDOM.render(
 	<React.StrictMode>
-		<DataContextProvider>
+		<RestaurantsContextProvider>
 			<ThemeProvider theme={theme}>
 				<App />
 			</ThemeProvider>
-		</DataContextProvider>
+		</RestaurantsContextProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 )
