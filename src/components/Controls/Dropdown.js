@@ -42,24 +42,31 @@ const DropDown = ({ filter }) => {
 	const formatValue = value =>
 		value
 			.split(' ')
-			.map(str => str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase())
+			.map(
+				str =>
+					str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase()
+			)
 			.join(' ')
 
 	return (
-		<DropDownTheme
-			ref={dropdownRef}
-			value={selectedItem}
-			onChange={() => setSelectedItem(dropdownRef.current.value)}>
-			{generateMenu()}
+		<DropDownTheme>
+			<select
+				onChange={() => setSelectedItem(dropdownRef.current.value)}
+				ref={dropdownRef}
+				value={selectedItem}>
+				{generateMenu()}
+			</select>
 		</DropDownTheme>
 	)
 }
 
 export default DropDown
 
-const DropDownTheme = styled.select`
-	font-size: ${props => props.theme.font.size.large};
-	margin-right: ${props => props.theme.spacing.medium};
-	margin-top: ${props => props.theme.spacing.medium};
-	max-width: 10rem;
+const DropDownTheme = styled.div`
+	select {
+		font-size: ${props => props.theme.font.size.large};
+		margin-right: ${props => props.theme.spacing.medium};
+		margin-top: ${props => props.theme.spacing.medium};
+		max-width: 10rem;
+	}
 `

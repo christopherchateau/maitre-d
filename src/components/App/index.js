@@ -18,11 +18,14 @@ const App = () => {
 export default App
 
 const AppTheme = styled.div`
+	* {
+		box-sizing: border-box;
+	}
+
 	align-items: center;
 	background: ${props => props.theme.color.lightgrey};
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	justify-content: center;
-	width: 100vw;
+	min-height: 100vh;
 `
