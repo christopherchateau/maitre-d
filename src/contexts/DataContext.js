@@ -1,9 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { getData, getMockRestaurants } from '../utilities/apiCalls'
 
-export const RestaurantsContext = createContext()
+export const DataContext = createContext()
 
-const RestaurantsContextProvider = props => {
+const DataContextProvider = props => {
 	const [restaurants, setRestaurants] = useState(null)
 
 	const loading = !restaurants
@@ -15,16 +15,16 @@ const RestaurantsContextProvider = props => {
 
 	const loadData = async () => {
 		setRestaurants(
-			await getMockRestaurants()
+			getMockRestaurants()
 			// await getData('restaurants')
 		)
 	}
 
 	return (
-		<RestaurantsContext.Provider value={{ loading, errors, restaurants }}>
+		<DataContext.Provider value={{ loading, errors, restaurants }}>
 			{props.children}
-		</RestaurantsContext.Provider>
+		</DataContext.Provider>
 	)
 }
 
-export default RestaurantsContextProvider
+export default DataContextProvider

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { RestaurantsContext } from '../../contexts/RestaurantsContext'
+import { DataContext } from '../../contexts/DataContext'
 
 const Errors = () => {
-	const { errors } = useContext(RestaurantsContext)
+	const { errors } = useContext(DataContext)
 
 	return (
 		<ErrorsTheme>

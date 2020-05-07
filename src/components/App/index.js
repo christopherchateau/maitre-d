@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { RestaurantsContext } from '../../contexts/RestaurantsContext'
+import { DataContext } from '../../contexts/DataContext'
 import Errors from '../Errors'
 import Loading from '../Loading'
 import MainPage from '../MainPage'
 
 const App = () => {
-	const { loading, errors } = useContext(RestaurantsContext)
+	const { loading, errors } = useContext(DataContext)
 
 	return (
 		<AppTheme>

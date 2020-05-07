@@ -1,5 +1,6 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
+import Dropdown from './Dropdown'
 
 const Controls = () => {
 	const [searchInput, setSearchInput] = useState('')
@@ -18,6 +19,7 @@ const Controls = () => {
 				placeholder='search...'
 			/>
 			<button className='search-btn'>search</button>
+			<Dropdown />
 		</ControlsTheme>
 	)
 }
