@@ -16,7 +16,8 @@ const DropDown = ({ filter }) => {
 	)
 
 	const menuItems = [...restaurants].reduce((menuItems, restaurant) => {
-		const item = restaurant[filter]
+        const item = restaurant[filter]
+        // console.log(typeof item)
 		menuItems.push(generateMenuItem(item))
 
 		return menuItems
@@ -27,6 +28,7 @@ const DropDown = ({ filter }) => {
 			ref={dropdownRef}
 			value={selectedItem}
 			onChange={() => setSelectedItem(dropdownRef.current.value)}>
+                {console.log(restaurants)}
 			{[generateMenuItem('Any'), ...menuItems]}
 		</DropDownTheme>
 	)
