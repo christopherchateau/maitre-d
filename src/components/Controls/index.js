@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Dropdown from './Dropdown'
 import SearchControls from './SearchControls'
 
 const Controls = () => {
-	const presetDropDownMenus = ['state', 'genre', 'attire', 'zip', 'hours', 'lat', 'long', 'city']
+	const presetDropDownMenus = ['state', 'genre', 'attire', 'zip', 'city', 'tags', 'name']
 
 	return (
 		<ControlsTheme>

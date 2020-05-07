@@ -50,6 +50,7 @@ const DropDown = ({ filter }) => {
 
 	return (
 		<DropDownTheme>
+			<h1>{formatValue(filter)}</h1>
 			<select
 				onChange={() => setSelectedItem(dropdownRef.current.value)}
 				ref={dropdownRef}
@@ -63,10 +64,18 @@ const DropDown = ({ filter }) => {
 export default DropDown
 
 const DropDownTheme = styled.div`
+	display: flex;
+	margin-top: ${props => props.theme.spacing.medium};
+	margin-right: ${props => props.theme.spacing.large};
+
+	h1 {
+		font-size: ${props => props.theme.font.size.medium};
+		font-weight: ${props => props.theme.font.weight.light};
+		margin-right: ${props => props.theme.spacing.small};
+	}
+
 	select {
-		font-size: ${props => props.theme.font.size.large};
-		margin-right: ${props => props.theme.spacing.medium};
-		margin-top: ${props => props.theme.spacing.medium};
+		font-size: ${props => props.theme.font.size.medium};
 		max-width: 10rem;
 	}
 `
