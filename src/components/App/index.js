@@ -24,5 +24,5 @@ const AppTheme = styled.div`
 	flex-direction: column;
 	height: 100vh;
 	justify-content: center;
-	padding: 3rem;
+	width: 100vw;
 `
