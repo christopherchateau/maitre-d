@@ -16,7 +16,9 @@ const DropDown = ({ filter }) => {
 			(formattedMenu, restaurant) => {
 				const values = restaurant[filter]
 
-				values.forEach(value => {
+				values.forEach(val => {
+					const value = formatValue(val)
+
 					if (!menuItems.includes(value)) {
 						menuItems.push(value)
 						formattedMenu.push(generateMenuItem(value))
@@ -37,6 +39,12 @@ const DropDown = ({ filter }) => {
 		</option>
 	)
 
+	const formatValue = value =>
+		value
+			.split(' ')
+			.map(str => str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase())
+			.join(' ')
+
 	return (
 		<DropDownTheme
 			ref={dropdownRef}
@@ -50,8 +58,8 @@ const DropDown = ({ filter }) => {
 export default DropDown
 
 const DropDownTheme = styled.select`
-    font-size: ${props => props.theme.font.size.large};
-    margin-right: ${props => props.theme.spacing.medium};
-    margin-top: ${props => props.theme.spacing.medium};
-    max-width: 10rem;
+	font-size: ${props => props.theme.font.size.large};
+	margin-right: ${props => props.theme.spacing.medium};
+	margin-top: ${props => props.theme.spacing.medium};
+	max-width: 10rem;
 `
