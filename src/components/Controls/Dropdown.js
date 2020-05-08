@@ -1,9 +1,9 @@
 import React, { useContext, useState, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
-import { sortByKey } from '../../utilities/helper'
+import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 
-const DropDown = ({ filter }) => {
+const DropDown = ({ menuName }) => {
 	const { restaurants } = useContext(DataContext)
 
 	const [selectedItem, setSelectedItem] = useState('')
@@ -14,11 +14,10 @@ const DropDown = ({ filter }) => {
 		const menuItems = []
 		const formattedMenu = restaurants.reduce(
 			(formattedMenu, restaurant) => {
-				const values = restaurant[filter]
+                let values = restaurant[menuName]
+                if (typeof values === 'string') values = [values]
 
-				values.forEach(val => {
-					const value = formatValue(val)
-
+				values.forEach(value => {
 					if (!menuItems.includes(value)) {
 						menuItems.push(value)
 						formattedMenu.push(generateMenuItem(value))
@@ -39,18 +38,9 @@ const DropDown = ({ filter }) => {
 		</option>
 	)
 
-	const formatValue = value =>
-		value
-			.split(' ')
-			.map(
-				str =>
-					str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase()
-			)
-			.join(' ')
-
 	return (
 		<DropDownTheme>
-			<h3 className='menu-name'>{formatValue(filter)}</h3>
+			<h3 className='menu-name'>{capitalizeFirstChar(menuName)}</h3>
 			<select
 				onChange={() => setSelectedItem(dropdownRef.current.value)}
 				ref={dropdownRef}

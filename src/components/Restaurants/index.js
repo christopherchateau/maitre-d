@@ -8,12 +8,12 @@ const Restaurants = () => {
 	return (
 		<RestaurantsTheme>
 			{restaurants.map(({ name, city, state, telephone, genre }) => {
-				return (
+                return (
 					<div className='row'>
 						<h3 className='row-item'>{name}</h3>
 						<h3 className='row-item'>{`${city}, ${state}`}</h3>
 						<h3 className='row-item'>{telephone}</h3>
-						<h3 className='row-item'>{genre.join(' ')}</h3>
+						<h3 className='row-item'>{genre}</h3>
 					</div>
 				)
 			})}
