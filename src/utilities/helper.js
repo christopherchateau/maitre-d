@@ -1,8 +1,11 @@
 export const formatFetchedData = data => {
 	data.forEach(item => {
-		Object.keys(item).map(key => (item[key] = item[key].split(',')))
-	})
+		Object.keys(item).forEach(key => {
 
+			// make listed items into arrays
+			if (/,/.test(item[key])) item[key] = item[key].split(',')
+		})
+	})
 	return sortByKey(data, 'name')
 }
 

@@ -3,7 +3,7 @@ import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
 import { sortByKey } from '../../utilities/helper'
 
-const DropDown = ({ filter }) => {
+const DropDown = ({ menuName }) => {
 	const { restaurants } = useContext(DataContext)
 
 	const [selectedItem, setSelectedItem] = useState('')
@@ -14,10 +14,11 @@ const DropDown = ({ filter }) => {
 		const menuItems = []
 		const formattedMenu = restaurants.reduce(
 			(formattedMenu, restaurant) => {
-				const values = restaurant[filter]
+                let values = restaurant[menuName]
+                if (typeof values === 'string') values = [values]
 
 				values.forEach(val => {
-					const value = formatValue(val)
+                    const value = capitalizeFirstChar(val)
 
 					if (!menuItems.includes(value)) {
 						menuItems.push(value)
@@ -37,20 +38,17 @@ const DropDown = ({ filter }) => {
 		<option value={item} key={item}>
 			{item}
 		</option>
-	)
-
-	const formatValue = value =>
-		value
-			.split(' ')
-			.map(
-				str =>
-					str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase()
-			)
-			.join(' ')
+    )
+    
+    const capitalizeFirstChar = input =>
+	input
+		.split(' ')
+		.map(str => str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase())
+		.join(' ')
 
 	return (
 		<DropDownTheme>
-			<h1>{formatValue(filter)}</h1>
+			<h3 className='menu-name'>{capitalizeFirstChar(menuName)}</h3>
 			<select
 				onChange={() => setSelectedItem(dropdownRef.current.value)}
 				ref={dropdownRef}
@@ -68,7 +66,7 @@ const DropDownTheme = styled.div`
 	margin-top: ${props => props.theme.spacing.medium};
 	margin-right: ${props => props.theme.spacing.large};
 
-	h1 {
+	.menu-name {
 		font-size: ${props => props.theme.font.size.medium};
 		font-weight: ${props => props.theme.font.weight.light};
 		margin-right: ${props => props.theme.spacing.small};
