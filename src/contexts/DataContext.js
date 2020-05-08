@@ -25,18 +25,13 @@ const DataContextProvider = props => {
 			getMockRestaurants()
 			// await getData('restaurants')
 		)
-		presetMenus.map(menu => updateMenus(menu))
+		presetMenus.map(menu => updateFilters(menu))
 	}
 
-	const availableMenus = () => {
-		const result = []
-		restaurantAttributes.forEach(type => {
-			if (!menus.find(menu => menu.type === type))
-				result.push(capitalizeFirstChar(type))
-		})
-
-		return result
-	}
+	const availableFilters = () =>
+		restaurantAttributes
+			.filter(attr => filters[attr] !== '')
+			.map(attr => capitalizeFirstChar(attr))
 
 	const filteredRestaurants = () => {
 		let result = []
@@ -59,14 +54,14 @@ const DataContextProvider = props => {
 		return true
 	}
 
-	const updateMenus = (type, selection = '') =>
+	const updateFilters = (type, selection = '') =>
 		type === 'Add Filter'
-			? addMenu(selection)
+			? addFilter(selection)
 			: setFilters(prevFilters => ({ ...prevFilters, [type]: selection }))
 
-	const addMenu = type => updateMenus(type.toLowerCase())
+	const addFilter = type => updateFilters(type.toLowerCase())
 
-	const removeMenu = type =>
+	const removeFilter = type =>
 		setFilters(prevFilters => {
 			delete prevFilters[type]
 			return { ...prevFilters }
@@ -75,14 +70,14 @@ const DataContextProvider = props => {
 	return (
 		<DataContext.Provider
 			value={{
-				loading,
-				errors,
-				restaurants,
-				filteredRestaurants,
 				menus,
-				removeMenu,
-				updateMenus,
-				availableMenus,
+				errors,
+				loading,
+				restaurants,
+				removeFilter,
+				updateFilters,
+				availableFilters,
+				filteredRestaurants,
 			}}>
 			{props.children}
 		</DataContext.Provider>

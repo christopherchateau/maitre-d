@@ -1,31 +1,28 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
 import { staticMenuOptions } from './data'
-import {
-	sortByKey,
-	capitalizeFirstChar,
-} from '../../utilities/helper'
+import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 
 const Menu = ({ type }) => {
-	const { restaurants, removeMenu, updateMenus, availableMenus } = useContext(
-		DataContext
-	)
-
-	const [selectedItem, setSelectedItem] = useState('All')
+	const {
+		restaurants,
+		removeFilter,
+		updateFilters,
+		availableFilters,
+	} = useContext(DataContext)
 
 	const menuRef = useRef()
 
 	const defaultOptions = {
-		...{ ...staticMenuOptions, 'Add Filter': availableMenus() },
+		...{ ...staticMenuOptions, 'Add Filter': availableFilters() },
 	}
 
-	const handleBtnClick = () => removeMenu(type)
+	const handleBtnClick = () => removeFilter(type)
 
 	const handleSelection = option => {
 		if (option === 'All') option = ''
-		setSelectedItem(option)
-		updateMenus(type, option)
+		updateFilters(type, option)
 	}
 
 	const generateMenu = () => {
@@ -36,7 +33,6 @@ const Menu = ({ type }) => {
 					let values = restaurant[type]
 
 					values.forEach(value => {
-
 						if (!menuOptions.includes(value)) {
 							menuOptions.push(value)
 							formattedMenu.push(formatMenuOption(value))
@@ -63,8 +59,7 @@ const Menu = ({ type }) => {
 			<h3 className='menu-type'>{capitalizeFirstChar(type) + ':'}</h3>
 			<select
 				onChange={() => handleSelection(menuRef.current.value)}
-				ref={menuRef}
-				value={selectedItem}>
+				ref={menuRef}>
 				{generateMenu()}
 			</select>
 			{type !== 'Add Filter' && (
