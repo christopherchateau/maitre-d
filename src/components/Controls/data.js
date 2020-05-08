@@ -1,4 +1,4 @@
-export const defaultOptions = {
+export const staticMenuOptions = {
 	state: [
 		'AL',
 		'AK',

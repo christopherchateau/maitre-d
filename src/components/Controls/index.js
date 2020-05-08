@@ -1,31 +1,25 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
 import Dropdown from './Dropdown'
 import SearchControls from './SearchControls'
 
-const presetDropDownMenus = [
-	'state',
-	'genre',
-	'attire',
-	'zip',
-	'city',
-	'tags',
-	'name',
-]
-
 const Controls = () => {
-	const [dropdownMenus, setDropdownMenus] = useState(presetDropDownMenus)
-
-	const removeMenu = name =>
-		setDropdownMenus(dropdownMenus.filter(menu => menu !== name))
+	const { menus } = useContext(DataContext)
 
 	return (
 		<ControlsTheme>
 			<SearchControls />
 			<div className='dropdowns'>
-				{dropdownMenus.map(menuName => (
-					<Dropdown {...{ menuName, removeMenu, key: menuName }} />
+				{menus.map(({ name }) => (
+					<Dropdown {...{ name, key: name }} />
 				))}
+				<Dropdown
+					{...{
+						name: 'Add Filter',
+						key: 'Add Filter',
+					}}
+				/>
 			</div>
 		</ControlsTheme>
 	)

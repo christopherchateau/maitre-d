@@ -1,31 +1,39 @@
-import React, { useContext, useState, useEffect, useRef } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
-import { defaultOptions } from './data'
-import { sortByKey } from '../../utilities/helper'
+import { staticMenuOptions } from './data'
+import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 
-const DropDown = ({ menuName, removeMenu }) => {
-	const { restaurants, updateFilters } = useContext(DataContext)
+const DropDown = ({ name }) => {
+	const {
+		restaurants,
+		// addMenu,
+		removeMenu,
+		updateMenus,
+		availableMenus,
+	} = useContext(DataContext)
 
 	const [selectedItem, setSelectedItem] = useState('')
 
 	const dropdownRef = useRef()
 
-	useEffect(() => {
-		updateFilters(menuName, selectedItem)
-	}, [selectedItem])
+	const defaultOptions = {
+		...{ ...staticMenuOptions, 'Add Filter': availableMenus() },
+	}
 
-	const handleBtnClick = () => removeMenu(menuName)
+	const handleBtnClick = () => removeMenu(name)
 
-	const handleSelection = option =>
+	const handleSelection = option => {
 		option === 'All' ? setSelectedItem('') : setSelectedItem(option)
+		updateMenus(name, option)
+	}
 
 	const generateMenu = () => {
 		const menuOptions = []
-		let formattedMenu = defaultOptions[menuName]
-			? defaultOptions[menuName].map(option => formatMenuOption(option))
+		const formattedMenu = defaultOptions[name]
+			? defaultOptions[name].map(option => formatMenuOption(option))
 			: restaurants.reduce((formattedMenu, restaurant) => {
-					let values = restaurant[menuName]
+					let values = restaurant[name]
 					if (typeof values === 'string') values = [values]
 
 					values.forEach(val => {
@@ -40,7 +48,10 @@ const DropDown = ({ menuName, removeMenu }) => {
 					return formattedMenu
 			  }, [])
 
-		return [formatMenuOption('All'), ...sortByKey(formattedMenu)]
+		const sortedMenu = sortByKey(formattedMenu)
+		const firstOption = name !== 'Add Filter' ? 'All' : ''
+
+		return [formatMenuOption(firstOption), ...sortedMenu]
 	}
 
 	const formatMenuOption = str => (
@@ -49,25 +60,18 @@ const DropDown = ({ menuName, removeMenu }) => {
 		</option>
 	)
 
-	const capitalizeFirstChar = input =>
-		input
-			.split(' ')
-			.map(
-				str =>
-					str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase()
-			)
-			.join(' ')
-
 	return (
 		<DropDownTheme>
-			<h3 className='menu-name'>{capitalizeFirstChar(menuName) + ':'}</h3>
+			<h3 className='menu-name'>{capitalizeFirstChar(name) + ':'}</h3>
 			<select
 				onChange={() => handleSelection(dropdownRef.current.value)}
 				ref={dropdownRef}
 				value={selectedItem}>
 				{generateMenu()}
 			</select>
-			<button onClick={handleBtnClick}>X</button>
+			{name !== 'Add Filter' && (
+				<button onClick={handleBtnClick}>X</button>
+			)}
 		</DropDownTheme>
 	)
 }
@@ -88,7 +92,6 @@ const DropDownTheme = styled.div`
 	}
 
 	select {
-		border-right: none;
 		font-size: ${props => props.theme.font.size.medium};
 		height: ${props => props.theme.spacing.xxlarge};
 		max-width: 10rem;
