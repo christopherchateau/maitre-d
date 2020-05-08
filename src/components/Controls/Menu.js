@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { staticMenuOptions } from './data'
 import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 
-const Menu = ({ type }) => {
+const Menu = ({ type, addFilterMenu = false }) => {
 	const {
 		restaurants,
 		removeFilter,
@@ -43,7 +43,7 @@ const Menu = ({ type }) => {
 			  }, [])
 
 		const sortedMenu = sortByKey(formattedMenu)
-		const firstOption = type !== 'Add Filter' ? 'All' : ''
+		const firstOption = addFilterMenu ? '' : 'Add'
 
 		return [formatMenuOption(firstOption), ...sortedMenu]
 	}
@@ -62,9 +62,7 @@ const Menu = ({ type }) => {
 				ref={menuRef}>
 				{generateMenu()}
 			</select>
-			{type !== 'Add Filter' && (
-				<button onClick={handleBtnClick}>X</button>
-			)}
+			{!addFilterMenu && <button onClick={handleBtnClick}>X</button>}
 		</MenuTheme>
 	)
 }
