@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { defaultOptions } from './data'
 import { sortByKey } from '../../utilities/helper'
 
-const DropDown = ({ menuName }) => {
+const DropDown = ({ menuName, removeMenu }) => {
 	const { restaurants, updateFilters } = useContext(DataContext)
 
 	const [selectedItem, setSelectedItem] = useState('')
@@ -14,6 +14,8 @@ const DropDown = ({ menuName }) => {
 	useEffect(() => {
 		updateFilters(menuName, selectedItem)
 	}, [selectedItem])
+
+	const handleBtnClick = () => removeMenu(menuName)
 
 	const handleSelection = option =>
 		option === 'All' ? setSelectedItem('') : setSelectedItem(option)
@@ -65,7 +67,7 @@ const DropDown = ({ menuName }) => {
 				value={selectedItem}>
 				{generateMenu()}
 			</select>
-			<button>X</button>
+			<button onClick={handleBtnClick}>X</button>
 		</DropDownTheme>
 	)
 }
@@ -98,9 +100,9 @@ const DropDownTheme = styled.div`
 		font-size: ${props => props.theme.font.size.small};
 		height: ${props => props.theme.spacing.xxlarge};
 		transition: all 0.5s ease-out;
-		
+
 		&:hover {
-			background: ${props => props.theme.color.charcoal};
+			background: ${props => props.theme.color.darkgrey};
 			color: ${props => props.theme.color.white};
 			transition: all 0.5s ease-out;
 		}

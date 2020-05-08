@@ -16,12 +16,15 @@ const presetDropDownMenus = [
 const Controls = () => {
 	const [dropdownMenus, setDropdownMenus] = useState(presetDropDownMenus)
 
+	const removeMenu = name =>
+		setDropdownMenus(dropdownMenus.filter(menu => menu !== name))
+
 	return (
 		<ControlsTheme>
 			<SearchControls />
 			<div className='dropdowns'>
 				{dropdownMenus.map(menuName => (
-					<Dropdown {...{ menuName }} />
+					<Dropdown {...{ menuName, removeMenu, key: menuName }} />
 				))}
 			</div>
 		</ControlsTheme>

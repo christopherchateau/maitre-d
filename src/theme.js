@@ -7,7 +7,7 @@ export default {
 	},
 	color: {
 		black: 'rgb(87,87,86)',
-		charcoal: 'rgb(62,62,63)',
+		darkgrey: 'rgb(100,100,100)',
 		lightgrey: 'rgb(230,231,233)',
 		white: 'rgb(255,255,255)',
 	},
