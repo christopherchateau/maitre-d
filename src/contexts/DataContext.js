@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { getData, getMockRestaurants } from '../utilities/apiCalls'
-import { sortByKey, capitalizeFirstChar } from '../utilities/helper'
+import { capitalizeFirstChar } from '../utilities/helper'
 
 export const DataContext = createContext()
 
@@ -8,10 +8,11 @@ const presetMenus = ['state', 'genre', 'attire', 'name']
 
 const DataContextProvider = props => {
 	const [restaurants, setRestaurants] = useState(null)
-	const [menus, setMenus] = useState([])
+	const [filters, setFilters] = useState({})
 
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
+	const menus = Object.keys(filters)
 	const restaurantAttributes =
 		(restaurants && Object.keys(restaurants[0])) || []
 
@@ -61,20 +62,15 @@ const DataContextProvider = props => {
 	const updateMenus = (type, selection = '') =>
 		type === 'Add Filter'
 			? addMenu(selection)
-			: setMenus(prevMenus =>
-					sortByKey(
-						[
-							{ type, selection },
-							...prevMenus.filter(filter => filter.type !== type),
-						],
-						'type'
-					)
-			  )
+			: setFilters(prevFilters => ({ ...prevFilters, [type]: selection }))
 
 	const addMenu = type => updateMenus(type.toLowerCase())
 
 	const removeMenu = type =>
-		setMenus(menus.filter(menu => menu.type !== type))
+		setFilters(prevFilters => {
+			delete prevFilters[type]
+			return { ...prevFilters }
+		})
 
 	return (
 		<DataContext.Provider

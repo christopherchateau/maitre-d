@@ -60,6 +60,7 @@ const Menu = ({ type }) => {
 
 	return (
 		<MenuTheme>
+			{console.log(type)}
 			<h3 className='menu-type'>{capitalizeFirstChar(type) + ':'}</h3>
 			<select
 				onChange={() => handleSelection(menuRef.current.value)}
