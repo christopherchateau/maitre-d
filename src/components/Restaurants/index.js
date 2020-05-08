@@ -29,7 +29,7 @@ export default Restaurants
 const RestaurantsTheme = styled.div`
 	background: ${props => props.theme.color.white};
 	max-width: ${props => props.theme.layout.maxwidth};
-	width: 90%;
+	width: ${props => props.theme.layout.contentwidth};
 
 	.row {
 		align-items: center;

@@ -18,5 +18,5 @@ const ControlsTheme = styled.form`
 	margin-top: ${props => props.theme.spacing.medium};
 	margin-bottom: ${props => props.theme.spacing.medium};
 	padding: ${props => props.theme.spacing.medium};
-	width: 90%;
+	width: ${props => props.theme.layout.contentwidth};
 `

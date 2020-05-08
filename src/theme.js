@@ -34,6 +34,7 @@ export default {
 		xxxlarge: '4rem',
 	},
 	layout: {
+		contentwidth: '80%',
 		maxwidth: '1200px',
 	},
 }

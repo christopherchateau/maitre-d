@@ -15,7 +15,7 @@ export default Logo
 
 const LogoTheme = styled.div`
 	padding-right: ${props => props.theme.spacing.xxxlarge};
-	width: 90%;
+	width: ${props => props.theme.layout.contentwidth};
 
 	h1 {
 		font-family: ${props => props.theme.font.family};
