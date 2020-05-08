@@ -1,22 +1,27 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
-import { sortByKey } from '../../utilities/helper'
 import { defaultOptions } from './data'
+import { sortByKey } from '../../utilities/helper'
 
 const DropDown = ({ menuName }) => {
-	const { restaurants } = useContext(DataContext)
+	const { restaurants, updateFilter } = useContext(DataContext)
 
 	const [selectedItem, setSelectedItem] = useState('')
 
 	const dropdownRef = useRef()
 
+	useEffect(() => {
+		updateFilter(menuName, selectedItem)
+	}, [selectedItem])
+
+	const handleSelection = option =>
+		option === 'All' ? setSelectedItem('') : setSelectedItem(option)
+
 	const generateMenu = () => {
 		const menuOptions = []
 		let formattedMenu = defaultOptions[menuName]
-
-			? defaultOptions[menuName].map(option => generateMenuOption(option))
-
+			? defaultOptions[menuName].map(option => formatMenuOption(option))
 			: restaurants.reduce((formattedMenu, restaurant) => {
 					let values = restaurant[menuName]
 					if (typeof values === 'string') values = [values]
@@ -26,17 +31,17 @@ const DropDown = ({ menuName }) => {
 
 						if (!menuOptions.includes(value)) {
 							menuOptions.push(value)
-							formattedMenu.push(generateMenuOption(value))
+							formattedMenu.push(formatMenuOption(value))
 						}
 					})
 
 					return formattedMenu
 			  }, [])
 
-		return [generateMenuOption('All'), ...sortByKey(formattedMenu)]
+		return [formatMenuOption('All'), ...sortByKey(formattedMenu)]
 	}
 
-	const generateMenuOption = str => (
+	const formatMenuOption = str => (
 		<option value={str} key={str}>
 			{str}
 		</option>
@@ -55,7 +60,7 @@ const DropDown = ({ menuName }) => {
 		<DropDownTheme>
 			<h3 className='menu-name'>{capitalizeFirstChar(menuName) + ':'}</h3>
 			<select
-				onChange={() => setSelectedItem(dropdownRef.current.value)}
+				onChange={() => handleSelection(dropdownRef.current.value)}
 				ref={dropdownRef}
 				value={selectedItem}>
 				{generateMenu()}
