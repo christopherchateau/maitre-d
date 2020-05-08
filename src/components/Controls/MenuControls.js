@@ -11,12 +11,7 @@ const MenuControls = () => {
 			{menus.map(({ name }) => (
 				<Menu {...{ name, key: name }} />
 			))}
-			<Menu
-				{...{
-					name: 'Add Filter',
-					key: 'Add Filter',
-				}}
-			/>
+			<Menu {...{ name: 'Add Filter', key: 'Add Filter' }} />
 		</MenuControlsTheme>
 	)
 }

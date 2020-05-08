@@ -2,15 +2,16 @@ import React, { useContext, useState, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
 import { staticMenuOptions } from './data'
-import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
+import {
+	sortByKey,
+	capitalizeFirstChar,
+	covertStrToArr,
+} from '../../utilities/helper'
 
 const Menu = ({ name }) => {
-	const {
-		restaurants,
-		removeMenu,
-		updateMenus,
-		availableMenus,
-	} = useContext(DataContext)
+	const { restaurants, removeMenu, updateMenus, availableMenus } = useContext(
+		DataContext
+	)
 
 	const [selectedItem, setSelectedItem] = useState('')
 
@@ -32,8 +33,7 @@ const Menu = ({ name }) => {
 		const formattedMenu = defaultOptions[name]
 			? defaultOptions[name].map(option => formatMenuOption(option))
 			: restaurants.reduce((formattedMenu, restaurant) => {
-					let values = restaurant[name]
-					if (typeof values === 'string') values = [values]
+					let values = covertStrToArr(restaurant[name])
 
 					values.forEach(val => {
 						const value = capitalizeFirstChar(val)

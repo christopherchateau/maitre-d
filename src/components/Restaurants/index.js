@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
+import { covertStrToArr } from '../../utilities/helper'
 
 const Restaurants = () => {
 	const { restaurants } = useContext(DataContext)
@@ -8,7 +9,7 @@ const Restaurants = () => {
 	return (
 		<RestaurantsTheme>
 			{restaurants.map(({ name, city, state, telephone, genre }) => {
-				const genres = typeof genre === 'string' ? [genre] : genre
+				const genres = covertStrToArr(genre)
 
 				return (
 					<div className='row' key={telephone}>

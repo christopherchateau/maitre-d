@@ -24,20 +24,14 @@ const DataContextProvider = props => {
 		return result
 	}
 
-	// const currentFilters = filters.map(filter => filter.menuName)
-	// const availableFilters = () => allFilters.filter(
-	// 	filter => !currentFilters.includes(filter)
-	// )
+	const filteredRestaurants = () => {}
+	// menus.forEach(({ name, selection }) => {
+	// 		restaurants.filter(restaurant => {
+	// 			console.log(name, selection)
 
-	// const filteredRestaurants = restaurants.filter(restaurant => {
-	// 	filters.forEach(({ menuName, selection }) => {
-	// 		console.log(menuName, selection)
-
-	// 		if (selection) {
-
-	// 		}
-	// 	})
-
+	// 			if (selection) {
+	// 			}
+	// 		})
 	// })
 
 	useEffect(() => {
@@ -76,6 +70,7 @@ const DataContextProvider = props => {
 				loading,
 				errors,
 				restaurants,
+				filteredRestaurants,
 				menus,
 				removeMenu,
 				updateMenus,

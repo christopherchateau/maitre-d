@@ -16,3 +16,6 @@ export const capitalizeFirstChar = input =>
 		.split(' ')
 		.map(str => str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase())
 		.join(' ')
+
+export const covertStrToArr = input =>
+	typeof input === 'string' ? [input] : input
