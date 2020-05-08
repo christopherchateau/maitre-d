@@ -12,7 +12,7 @@ const Menu = ({ type }) => {
 		DataContext
 	)
 
-	const [selectedItem, setSelectedItem] = useState('')
+	const [selectedItem, setSelectedItem] = useState('All')
 
 	const menuRef = useRef()
 
@@ -23,7 +23,8 @@ const Menu = ({ type }) => {
 	const handleBtnClick = () => removeMenu(type)
 
 	const handleSelection = option => {
-		option === 'All' ? setSelectedItem('') : setSelectedItem(option)
+		if (option === 'All') option = ''
+		setSelectedItem(option)
 		updateMenus(type, option)
 	}
 
@@ -34,8 +35,7 @@ const Menu = ({ type }) => {
 			: restaurants.reduce((formattedMenu, restaurant) => {
 					let values = restaurant[type]
 
-					values.forEach(val => {
-						const value = capitalizeFirstChar(val)
+					values.forEach(value => {
 
 						if (!menuOptions.includes(value)) {
 							menuOptions.push(value)

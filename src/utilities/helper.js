@@ -1,9 +1,15 @@
 export const formatFetchedData = data => {
+	const standardizeText = ['city', 'tags', 'attire', 'genre']
+
 	data.forEach(item => {
 		Object.keys(item).forEach(key => {
 
 			// covert all values into arrays
 			item[key] = item[key].split(',')
+
+			// standardize capitalization for specific values
+			if (standardizeText.includes(key))
+				item[key] = item[key].map(str => capitalizeFirstChar(str))
 		})
 	})
 	return sortByKey(data, 'name')

@@ -15,6 +15,18 @@ const DataContextProvider = props => {
 	const restaurantAttributes =
 		(restaurants && Object.keys(restaurants[0])) || []
 
+	useEffect(() => {
+		loadData()
+	}, [])
+
+	const loadData = async () => {
+		setRestaurants(
+			getMockRestaurants()
+			// await getData('restaurants')
+		)
+		presetMenus.map(menu => updateMenus(menu))
+	}
+
 	const availableMenus = () => {
 		const result = []
 		restaurantAttributes.forEach(type => {
@@ -44,18 +56,6 @@ const DataContextProvider = props => {
 			}
 		}
 		return true
-	}
-
-	useEffect(() => {
-		loadData()
-	}, [])
-
-	const loadData = async () => {
-		setRestaurants(
-			getMockRestaurants()
-			// await getData('restaurants')
-		)
-		presetMenus.map(menu => updateMenus(menu))
 	}
 
 	const updateMenus = (type, selection = '') =>
