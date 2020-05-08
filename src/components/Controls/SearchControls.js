@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const SearchControls = () => {
@@ -24,6 +24,8 @@ const SearchControls = () => {
 export default SearchControls
 
 const SearchControlsTheme = styled.div`
+	margin: ${props => props.theme.spacing.small} 0;
+
 	input {
 		font-size: ${props => props.theme.font.size.large};
 	}

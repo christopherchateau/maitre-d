@@ -20,4 +20,5 @@ const MainPageTheme = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 2rem;
+	width: 100vw;
 `

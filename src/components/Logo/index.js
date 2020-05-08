@@ -14,12 +14,16 @@ const Logo = () => (
 export default Logo
 
 const LogoTheme = styled.div`
+	padding-right: ${props => props.theme.spacing.xxxlarge};
+	width: ${props => props.theme.layout.contentwidth};
+
 	h1 {
 		font-family: ${props => props.theme.font.family};
 		font-size: ${props => props.theme.font.size.xlarge};
 		font-weight: ${props => props.theme.font.weight.light};
 		position: relative;
 		margin: 0;
+		text-align: right;
 	}
 
 	img {
