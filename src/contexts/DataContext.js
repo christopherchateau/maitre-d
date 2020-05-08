@@ -92,7 +92,6 @@ const DataContextProvider = props => {
 			value={{
 				menus,
 				errors,
-				search,
 				loading,
 				setSearch,
 				restaurants,

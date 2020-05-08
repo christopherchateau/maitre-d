@@ -1,19 +1,29 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
 
 const SearchControls = () => {
-	const { search, setSearch } = useContext(DataContext)
+	const { setSearch } = useContext(DataContext)
+
+	const [input, setInput] = useState('')
 
 	const handleInputChange = e => {
-		setSearch(e.target.value)
+		const currentInput = e.target.value
+
+		setInput(currentInput)
+		if (!currentInput) setSearch(input)
+	}
+
+	const handleSubmit = e => {
+		e.preventDefault()
+		setSearch(input)
 	}
 
 	return (
-		<SearchControlsTheme>
+		<SearchControlsTheme onSubmit={handleSubmit}>
 			<input
 				onChange={handleInputChange}
-				value={search}
+				value={input}
 				type='text'
 				placeholder='search...'
 			/>
@@ -24,7 +34,7 @@ const SearchControls = () => {
 
 export default SearchControls
 
-const SearchControlsTheme = styled.div`
+const SearchControlsTheme = styled.form`
 	margin: ${props => props.theme.spacing.small};
 
 	input {
