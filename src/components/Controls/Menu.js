@@ -18,17 +18,12 @@ const Menu = ({ type, addFilterMenu = false }) => {
 		...{ ...staticMenuOptions, 'Add Filter': availableFilters() },
 	}
 
-	const handleBtnClick = () => removeFilter(type)
-
-	const handleSelection = option => {
-		if (option === 'All') option = ''
-		updateFilters(type, option)
-	}
-
 	const generateMenu = () => {
 		const menuOptions = []
 		const formattedMenu = defaultOptions[type]
+
 			? defaultOptions[type].map(option => formatMenuOption(option))
+
 			: restaurants.reduce((formattedMenu, restaurant) => {
 					let values = restaurant[type]
 
@@ -43,7 +38,7 @@ const Menu = ({ type, addFilterMenu = false }) => {
 			  }, [])
 
 		const sortedMenu = sortByKey(formattedMenu)
-		const firstOption = addFilterMenu ? '' : 'Add'
+		const firstOption = addFilterMenu ? '' : 'All'
 
 		return [formatMenuOption(firstOption), ...sortedMenu]
 	}
@@ -53,6 +48,13 @@ const Menu = ({ type, addFilterMenu = false }) => {
 			{str}
 		</option>
 	)
+
+	const handleBtnClick = () => removeFilter(type)
+
+	const handleSelection = option => {
+		if (option === 'All') option = ''
+		updateFilters(type, option)
+	}
 
 	return (
 		<MenuTheme>
