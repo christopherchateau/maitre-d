@@ -5,14 +5,14 @@ import { defaultOptions } from './data'
 import { sortByKey } from '../../utilities/helper'
 
 const DropDown = ({ menuName }) => {
-	const { restaurants, updateFilter } = useContext(DataContext)
+	const { restaurants, updateFilters } = useContext(DataContext)
 
 	const [selectedItem, setSelectedItem] = useState('')
 
 	const dropdownRef = useRef()
 
 	useEffect(() => {
-		updateFilter(menuName, selectedItem)
+		updateFilters(menuName, selectedItem)
 	}, [selectedItem])
 
 	const handleSelection = option =>
@@ -65,6 +65,7 @@ const DropDown = ({ menuName }) => {
 				value={selectedItem}>
 				{generateMenu()}
 			</select>
+			<button>X</button>
 		</DropDownTheme>
 	)
 }
@@ -85,9 +86,23 @@ const DropDownTheme = styled.div`
 	}
 
 	select {
+		border-right: none;
 		font-size: ${props => props.theme.font.size.medium};
-		height: 3rem;
+		height: ${props => props.theme.spacing.xxlarge};
 		max-width: 10rem;
 		padding: ${props => props.theme.spacing.small};
+	}
+
+	button {
+		cursor: pointer;
+		font-size: ${props => props.theme.font.size.small};
+		height: ${props => props.theme.spacing.xxlarge};
+		transition: all 0.5s ease-out;
+		
+		&:hover {
+			background: ${props => props.theme.color.charcoal};
+			color: ${props => props.theme.color.white};
+			transition: all 0.5s ease-out;
+		}
 	}
 `

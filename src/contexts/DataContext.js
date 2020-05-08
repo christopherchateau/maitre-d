@@ -10,6 +10,18 @@ const DataContextProvider = props => {
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
 
+	// const filteredRestaurants = restaurants.filter(restaurant => {
+	// 	filters.forEach(({ menuName, selection }) => {
+	// 		console.log(menuName, selection)
+	
+	// 		if (selection) {
+	
+	// 		}
+	// 	})
+
+	// })
+	
+
 	useEffect(() => {
 		loadData()
 	}, [])
@@ -21,16 +33,16 @@ const DataContextProvider = props => {
 		)
 	}
 
-	const updateFilter = (menuName, selection) => {
+	const updateFilters = (menuName, selection) => {
 		setFilters(prevFilters => [
 			{ menuName, selection },
-			...prevFilters.filter(menu => menu.menuName !== menuName),
+			...prevFilters.filter(filter => filter.menuName !== menuName),
 		])
 	}
 
 	return (
 		<DataContext.Provider
-			value={{ loading, errors, restaurants, updateFilter }}>
+			value={{ loading, errors, restaurants, updateFilters }}>
 			{props.children}
 		</DataContext.Provider>
 	)

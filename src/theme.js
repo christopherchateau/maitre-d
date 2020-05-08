@@ -30,7 +30,8 @@ export default {
 		medium: '1rem',
 		large: '1.4rem',
 		xlarge: '2rem',
-		xxlarge: '4rem',
+		xxlarge: '3rem',
+		xxxlarge: '4rem',
 	},
 	layout: {
 		maxwidth: '1200px',

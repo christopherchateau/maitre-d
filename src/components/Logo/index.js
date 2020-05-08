@@ -14,7 +14,7 @@ const Logo = () => (
 export default Logo
 
 const LogoTheme = styled.div`
-	padding-right: ${props => props.theme.spacing.xxlarge};
+	padding-right: ${props => props.theme.spacing.xxxlarge};
 	width: 90%;
 
 	h1 {

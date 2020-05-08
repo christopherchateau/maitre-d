@@ -39,7 +39,7 @@ const RestaurantsTheme = styled.div`
 		.row-item {
 			font-weight: ${props => props.theme.font.weight.light};
 			margin: 0;
-			padding: ${props => props.theme.spacing.xlarge};
+			padding: ${props => props.theme.spacing.xlarge} ${props => props.theme.spacing.medium};
 			text-align: center;
 			width: 25%;
 		}
