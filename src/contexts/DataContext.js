@@ -50,9 +50,9 @@ const DataContextProvider = props => {
 
 	const runFilters = restaurant => {
 		for (let i = 0; i < menus.length; i++) {
-			const { type, selection } = menus[i]
+			const type = menus[i]
 
-			if (selection && !restaurant[type].includes(selection)) {
+			if (filters[type] && !restaurant[type].includes(filters[type])) {
 				return false
 			}
 		}
