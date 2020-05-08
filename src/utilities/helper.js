@@ -1,8 +1,9 @@
 export const formatFetchedData = data => {
 	data.forEach(item => {
 		Object.keys(item).forEach(key => {
-			// make listed items into arrays
-			if (/,/.test(item[key])) item[key] = item[key].split(',')
+
+			// covert all values into arrays
+			item[key] = item[key].split(',')
 		})
 	})
 	return sortByKey(data, 'name')
@@ -16,6 +17,3 @@ export const capitalizeFirstChar = input =>
 		.split(' ')
 		.map(str => str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase())
 		.join(' ')
-
-export const covertStrToArr = input =>
-	typeof input === 'string' ? [input] : input

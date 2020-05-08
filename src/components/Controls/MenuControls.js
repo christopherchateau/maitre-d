@@ -8,10 +8,10 @@ const MenuControls = () => {
 
 	return (
 		<MenuControlsTheme>
-			{menus.map(({ name }) => (
-				<Menu {...{ name, key: name }} />
+			{menus.map(({ type }) => (
+				<Menu {...{ type, key: type }} />
 			))}
-			<Menu {...{ name: 'Add Filter', key: 'Add Filter' }} />
+			<Menu {...{ type: 'Add Filter', key: 'Add Filter' }} />
 		</MenuControlsTheme>
 	)
 }

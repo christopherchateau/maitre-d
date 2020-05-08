@@ -1,25 +1,25 @@
 import React, { useContext } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
-import { covertStrToArr } from '../../utilities/helper'
 
 const Restaurants = () => {
-	const { restaurants } = useContext(DataContext)
+	const { filteredRestaurants } = useContext(DataContext)
 
 	return (
 		<RestaurantsTheme>
-			{restaurants.map(({ name, city, state, telephone, genre }) => {
-				const genres = covertStrToArr(genre)
+			{filteredRestaurants().map(
+				({ name, city, state, telephone, genre }) => {
 
-				return (
-					<div className='row' key={telephone}>
-						<h3 className='row-item'>{name}</h3>
-						<h3 className='row-item'>{`${city}, ${state}`}</h3>
-						<h3 className='row-item'>{telephone}</h3>
-						<h3 className='row-item'>{genres.join(' ')}</h3>
-					</div>
-				)
-			})}
+					return (
+						<div className='row' key={telephone}>
+							<h3 className='row-item'>{name}</h3>
+							<h3 className='row-item'>{`${city}, ${state}`}</h3>
+							<h3 className='row-item'>{telephone}</h3>
+							<h3 className='row-item'>{genre.join(', ')}</h3>
+						</div>
+					)
+				}
+			)}
 		</RestaurantsTheme>
 	)
 }
@@ -40,8 +40,7 @@ const RestaurantsTheme = styled.div`
 		.row-item {
 			font-weight: ${props => props.theme.font.weight.light};
 			margin: 0;
-			padding: ${props => props.theme.spacing.xlarge}
-				${props => props.theme.spacing.medium};
+			padding: ${props => props.theme.spacing.xlarge} ${props => props.theme.spacing.medium};
 			text-align: center;
 			width: 25%;
 		}

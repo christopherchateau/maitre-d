@@ -12,27 +12,39 @@ const DataContextProvider = props => {
 
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
+	const restaurantAttributes =
+		(restaurants && Object.keys(restaurants[0])) || []
 
 	const availableMenus = () => {
 		const result = []
-		const allMenuTypes = (restaurants && Object.keys(restaurants[0])) || []
-		allMenuTypes.forEach(type => {
-			if (!menus.find(menu => menu.name === type))
+		restaurantAttributes.forEach(type => {
+			if (!menus.find(menu => menu.type === type))
 				result.push(capitalizeFirstChar(type))
 		})
 
 		return result
 	}
 
-	const filteredRestaurants = () => {}
-	// menus.forEach(({ name, selection }) => {
-	// 		restaurants.filter(restaurant => {
-	// 			console.log(name, selection)
+	const filteredRestaurants = () => {
+		let result = []
 
-	// 			if (selection) {
-	// 			}
-	// 		})
-	// })
+		restaurants.forEach(restaurant => {
+			if (runFilters(restaurant)) result.push(restaurant)
+		})
+
+		return result
+	}
+
+	const runFilters = restaurant => {
+		for (let i = 0; i < menus.length; i++) {
+			const { type, selection } = menus[i]
+
+			if (selection && !restaurant[type].includes(selection)) {
+				return false
+			}
+		}
+		return true
+	}
 
 	useEffect(() => {
 		loadData()
@@ -46,23 +58,23 @@ const DataContextProvider = props => {
 		presetMenus.map(menu => updateMenus(menu))
 	}
 
-	const updateMenus = (name, selection = '') =>
-		name === 'Add Filter'
+	const updateMenus = (type, selection = '') =>
+		type === 'Add Filter'
 			? addMenu(selection)
 			: setMenus(prevMenus =>
 					sortByKey(
 						[
-							{ name, selection },
-							...prevMenus.filter(filter => filter.name !== name),
+							{ type, selection },
+							...prevMenus.filter(filter => filter.type !== type),
 						],
-						'name'
+						'type'
 					)
 			  )
 
-	const addMenu = name => updateMenus(name.toLowerCase())
+	const addMenu = type => updateMenus(type.toLowerCase())
 
-	const removeMenu = name =>
-		setMenus(menus.filter(menu => menu.name !== name))
+	const removeMenu = type =>
+		setMenus(menus.filter(menu => menu.type !== type))
 
 	return (
 		<DataContext.Provider

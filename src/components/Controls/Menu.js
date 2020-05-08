@@ -5,10 +5,9 @@ import { staticMenuOptions } from './data'
 import {
 	sortByKey,
 	capitalizeFirstChar,
-	covertStrToArr,
 } from '../../utilities/helper'
 
-const Menu = ({ name }) => {
+const Menu = ({ type }) => {
 	const { restaurants, removeMenu, updateMenus, availableMenus } = useContext(
 		DataContext
 	)
@@ -21,19 +20,19 @@ const Menu = ({ name }) => {
 		...{ ...staticMenuOptions, 'Add Filter': availableMenus() },
 	}
 
-	const handleBtnClick = () => removeMenu(name)
+	const handleBtnClick = () => removeMenu(type)
 
 	const handleSelection = option => {
 		option === 'All' ? setSelectedItem('') : setSelectedItem(option)
-		updateMenus(name, option)
+		updateMenus(type, option)
 	}
 
 	const generateMenu = () => {
 		const menuOptions = []
-		const formattedMenu = defaultOptions[name]
-			? defaultOptions[name].map(option => formatMenuOption(option))
+		const formattedMenu = defaultOptions[type]
+			? defaultOptions[type].map(option => formatMenuOption(option))
 			: restaurants.reduce((formattedMenu, restaurant) => {
-					let values = covertStrToArr(restaurant[name])
+					let values = restaurant[type]
 
 					values.forEach(val => {
 						const value = capitalizeFirstChar(val)
@@ -48,7 +47,7 @@ const Menu = ({ name }) => {
 			  }, [])
 
 		const sortedMenu = sortByKey(formattedMenu)
-		const firstOption = name !== 'Add Filter' ? 'All' : ''
+		const firstOption = type !== 'Add Filter' ? 'All' : ''
 
 		return [formatMenuOption(firstOption), ...sortedMenu]
 	}
@@ -61,14 +60,14 @@ const Menu = ({ name }) => {
 
 	return (
 		<MenuTheme>
-			<h3 className='menu-name'>{capitalizeFirstChar(name) + ':'}</h3>
+			<h3 className='menu-type'>{capitalizeFirstChar(type) + ':'}</h3>
 			<select
 				onChange={() => handleSelection(menuRef.current.value)}
 				ref={menuRef}
 				value={selectedItem}>
 				{generateMenu()}
 			</select>
-			{name !== 'Add Filter' && (
+			{type !== 'Add Filter' && (
 				<button onClick={handleBtnClick}>X</button>
 			)}
 		</MenuTheme>
@@ -83,7 +82,7 @@ const MenuTheme = styled.div`
 	margin-top: ${props => props.theme.spacing.medium};
 	margin-right: ${props => props.theme.spacing.large};
 
-	.menu-name {
+	.menu-type {
 		font-size: ${props => props.theme.font.size.large};
 		font-weight: ${props => props.theme.font.weight.light};
 		margin: ${props => props.theme.spacing.small};
