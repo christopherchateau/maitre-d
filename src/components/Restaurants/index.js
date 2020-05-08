@@ -9,7 +9,6 @@ const Restaurants = () => {
 		<RestaurantsTheme>
 			{filteredRestaurants().map(
 				({ name, city, state, telephone, genre }) => {
-
 					return (
 						<div className='row' key={telephone}>
 							<h3 className='row-item'>{name}</h3>
@@ -33,9 +32,13 @@ const RestaurantsTheme = styled.div`
 
 	.row {
 		align-items: center;
-		border: 1px solid grey;
+		border-bottom: 1px solid ${props => props.theme.color.darkgrey};
 		display: flex;
 		justify-content: space-between;
+
+		&:last-child {
+			border: none
+		}
 
 		.row-item {
 			font-weight: ${props => props.theme.font.weight.light};
