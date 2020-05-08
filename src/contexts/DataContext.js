@@ -4,7 +4,7 @@ import { sortByKey, capitalizeFirstChar } from '../utilities/helper'
 
 export const DataContext = createContext()
 
-const presetMenus = ['state', 'genre', 'attire', 'zip', 'city', 'tags', 'name']
+const presetMenus = ['state', 'genre', 'attire', 'name']
 
 const DataContextProvider = props => {
 	const [restaurants, setRestaurants] = useState(null)

@@ -4,10 +4,9 @@ import styled from 'styled-components'
 import { staticMenuOptions } from './data'
 import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 
-const DropDown = ({ name }) => {
+const Menu = ({ name }) => {
 	const {
 		restaurants,
-		// addMenu,
 		removeMenu,
 		updateMenus,
 		availableMenus,
@@ -15,7 +14,7 @@ const DropDown = ({ name }) => {
 
 	const [selectedItem, setSelectedItem] = useState('')
 
-	const dropdownRef = useRef()
+	const menuRef = useRef()
 
 	const defaultOptions = {
 		...{ ...staticMenuOptions, 'Add Filter': availableMenus() },
@@ -61,24 +60,24 @@ const DropDown = ({ name }) => {
 	)
 
 	return (
-		<DropDownTheme>
+		<MenuTheme>
 			<h3 className='menu-name'>{capitalizeFirstChar(name) + ':'}</h3>
 			<select
-				onChange={() => handleSelection(dropdownRef.current.value)}
-				ref={dropdownRef}
+				onChange={() => handleSelection(menuRef.current.value)}
+				ref={menuRef}
 				value={selectedItem}>
 				{generateMenu()}
 			</select>
 			{name !== 'Add Filter' && (
 				<button onClick={handleBtnClick}>X</button>
 			)}
-		</DropDownTheme>
+		</MenuTheme>
 	)
 }
 
-export default DropDown
+export default Menu
 
-const DropDownTheme = styled.div`
+const MenuTheme = styled.div`
 	align-items: center;
 	display: flex;
 	margin-top: ${props => props.theme.spacing.medium};
