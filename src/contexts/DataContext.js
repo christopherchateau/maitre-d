@@ -4,11 +4,10 @@ import { capitalizeFirstChar } from '../utilities/helper'
 
 export const DataContext = createContext()
 
-const presetMenus = ['name', 'state', 'genre', 'attire']
-
 const DataContextProvider = props => {
 	const [restaurants, setRestaurants] = useState(null)
 	const [filters, setFilters] = useState({})
+	const [search, setSearch] = useState('')
 
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
@@ -21,6 +20,8 @@ const DataContextProvider = props => {
 	}, [])
 
 	const loadData = async () => {
+		const presetMenus = ['name', 'state', 'genre', 'attire']
+
 		setRestaurants(
 			getMockRestaurants()
 			// await getData('restaurants')
@@ -37,7 +38,8 @@ const DataContextProvider = props => {
 		let result = []
 
 		restaurants.forEach(restaurant => {
-			if (runFilters(restaurant)) result.push(restaurant)
+			if (runFilters(restaurant) && runSearch(restaurant))
+				result.push(restaurant)
 		})
 
 		return result
@@ -52,6 +54,24 @@ const DataContextProvider = props => {
 			}
 		}
 		return true
+	}
+
+	const runSearch = restaurant => {
+		const searchTypes = ['name', 'city', 'genre']
+
+		for (let i = 0; i < searchTypes.length; i++) {
+			const type = searchTypes[i]
+
+			if (
+				!search ||
+				restaurant[type].some(type =>
+					type.toLowerCase().includes(search.toLowerCase())
+				)
+			) {
+				return true
+			}
+		}
+		return false
 	}
 
 	const updateFilters = (type, selection = '') =>
@@ -72,7 +92,9 @@ const DataContextProvider = props => {
 			value={{
 				menus,
 				errors,
+				search,
 				loading,
+				setSearch,
 				restaurants,
 				removeFilter,
 				updateFilters,
