@@ -1,24 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Dropdown from './Dropdown'
 import SearchControls from './SearchControls'
 
+const presetDropDownMenus = [
+	'state',
+	'genre',
+	'attire',
+	'zip',
+	'city',
+	'tags',
+	'name',
+]
+
 const Controls = () => {
-	const presetDropDownMenus = [
-		'state',
-		'genre',
-		'attire',
-		'zip',
-		'city',
-		'tags',
-		'name',
-	]
+	const [dropdownMenus, setDropdownMenus] = useState(presetDropDownMenus)
 
 	return (
 		<ControlsTheme>
 			<SearchControls />
 			<div className='dropdowns'>
-				{presetDropDownMenus.map(menuName => (
+				{dropdownMenus.map(menuName => (
 					<Dropdown {...{ menuName }} />
 				))}
 			</div>

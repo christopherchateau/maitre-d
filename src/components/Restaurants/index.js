@@ -8,12 +8,14 @@ const Restaurants = () => {
 	return (
 		<RestaurantsTheme>
 			{restaurants.map(({ name, city, state, telephone, genre }) => {
+                const genres = typeof genre === 'string' ? [genre] : genre
+
                 return (
 					<div className='row'>
 						<h3 className='row-item'>{name}</h3>
 						<h3 className='row-item'>{`${city}, ${state}`}</h3>
 						<h3 className='row-item'>{telephone}</h3>
-						<h3 className='row-item'>{genre}</h3>
+						<h3 className='row-item'>{genres.join(' ')}</h3>
 					</div>
 				)
 			})}

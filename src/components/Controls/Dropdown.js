@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
-import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
+import { sortByKey } from '../../utilities/helper'
 
 const DropDown = ({ menuName }) => {
 	const { restaurants } = useContext(DataContext)
@@ -17,7 +17,9 @@ const DropDown = ({ menuName }) => {
                 let values = restaurant[menuName]
                 if (typeof values === 'string') values = [values]
 
-				values.forEach(value => {
+				values.forEach(val => {
+                    const value = capitalizeFirstChar(val)
+
 					if (!menuItems.includes(value)) {
 						menuItems.push(value)
 						formattedMenu.push(generateMenuItem(value))
@@ -36,7 +38,13 @@ const DropDown = ({ menuName }) => {
 		<option value={item} key={item}>
 			{item}
 		</option>
-	)
+    )
+    
+    const capitalizeFirstChar = input =>
+	input
+		.split(' ')
+		.map(str => str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase())
+		.join(' ')
 
 	return (
 		<DropDownTheme>
