@@ -12,7 +12,7 @@ const Controls = () => (
 
 export default Controls
 
-const ControlsTheme = styled.form`
+const ControlsTheme = styled.div`
 	background: ${props => props.theme.color.white};
 	max-width: ${props => props.theme.layout.maxwidth};
 	margin-top: ${props => props.theme.spacing.medium};
