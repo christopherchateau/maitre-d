@@ -12,8 +12,7 @@ const DataContextProvider = props => {
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
 	const menus = Object.keys(filters)
-	const restaurantAttributes =
-		(restaurants && Object.keys(restaurants[0])) || []
+	const restaurantAttributes = restaurants && Object.keys(restaurants[0]) || []
 
 	useEffect(() => {
 		loadData()
@@ -93,6 +92,7 @@ const DataContextProvider = props => {
 				menus,
 				errors,
 				loading,
+				filters,
 				setSearch,
 				restaurants,
 				removeFilter,
