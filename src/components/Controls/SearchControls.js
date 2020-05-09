@@ -11,7 +11,7 @@ const SearchControls = () => {
 		const currentInput = e.target.value
 
 		setInput(currentInput)
-		if (!currentInput) setSearch(input)
+		if (!currentInput.length) setSearch(' ')
 	}
 
 	const handleSubmit = e => {

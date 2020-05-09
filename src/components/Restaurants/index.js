@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
 import PaginationControls from './PaginationControls'
@@ -6,20 +6,37 @@ import PaginationControls from './PaginationControls'
 const Restaurants = () => {
 	const { filters, filteredRestaurants } = useContext(DataContext)
 
-	const [pagination, setPagination] = useState(0)
+	const [paginationIndex, setPaginationIndex] = useState(0)
 
 	const filteredByState = !!filters.state
 	const displayRestaurants = filteredRestaurants()
+	const displayCount = displayRestaurants.length
+	console.log(paginationIndex)
+	useEffect(() => {
+		setPaginationIndex(0)
+	}, [displayCount])
+
+	const goBack = () => {
+		if (paginationIndex > 0)
+			setPaginationIndex(paginationIndex => paginationIndex - 10)
+	}
+
+	const goForward = () => {
+		if (paginationIndex + 10 < displayCount)
+			setPaginationIndex(paginationIndex => paginationIndex + 10)
+	}
 
 	return (
 		<RestaurantsTheme>
+			{console.log(paginationIndex)}
 			{!displayRestaurants.length && filteredByState ? (
 				<h3 className='row-item no-states-msg'>
 					No Results Found In This State
 				</h3>
 			) : (
-				displayRestaurants.map(
-					({ name, city, state, telephone, genre }) => {
+				displayRestaurants
+					.slice(paginationIndex, paginationIndex + 10)
+					.map(({ name, city, state, telephone, genre }) => {
 						return (
 							<div className='row' key={telephone}>
 								<h3 className='row-item'>{name}</h3>
@@ -28,10 +45,9 @@ const Restaurants = () => {
 								<h3 className='row-item'>{genre.join(', ')}</h3>
 							</div>
 						)
-					}
-				)
+					})
 			)}
-			<PaginationControls />
+			<PaginationControls {...{ goBack, goForward }} />
 		</RestaurantsTheme>
 	)
 }
@@ -41,7 +57,7 @@ export default Restaurants
 const RestaurantsTheme = styled.div`
 	max-width: ${props => props.theme.layout.maxwidth};
 	width: ${props => props.theme.layout.contentwidth};
-	
+
 	.row {
 		align-items: center;
 		background: ${props => props.theme.color.white};
@@ -57,7 +73,8 @@ const RestaurantsTheme = styled.div`
 	.row-item {
 		font-weight: ${props => props.theme.font.weight.light};
 		margin: 0;
-		padding: ${props => props.theme.spacing.xlarge} ${props => props.theme.spacing.medium};
+		padding: ${props => props.theme.spacing.xlarge}
+			${props => props.theme.spacing.medium};
 		text-align: center;
 		width: 25%;
 	}
