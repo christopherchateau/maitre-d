@@ -43,7 +43,15 @@ const SearchControlsTheme = styled.form`
 	}
 
 	button {
+		cursor: pointer;
 		font-size: ${props => props.theme.font.size.large};
 		padding: ${props => props.theme.spacing.small};
+		transition: all 0.5s ease-out;
+
+		&:hover {
+			background: ${props => props.theme.color.darkgrey};
+			color: ${props => props.theme.color.white};
+			transition: all 0.5s ease-out;
+		}
 	}
 `

@@ -1,12 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import styled from 'styled-components'
+import PaginationControls from './PaginationControls'
 
 const Restaurants = () => {
 	const { filters, filteredRestaurants } = useContext(DataContext)
 
-	const displayRestaurants = filteredRestaurants()
+	const [pagination, setPagination] = useState(0)
+
 	const filteredByState = !!filters.state
+	const displayRestaurants = filteredRestaurants()
 
 	return (
 		<RestaurantsTheme>
@@ -28,6 +31,7 @@ const Restaurants = () => {
 					}
 				)
 			)}
+			<PaginationControls />
 		</RestaurantsTheme>
 	)
 }
@@ -35,17 +39,17 @@ const Restaurants = () => {
 export default Restaurants
 
 const RestaurantsTheme = styled.div`
-	background: ${props => props.theme.color.white};
 	max-width: ${props => props.theme.layout.maxwidth};
 	width: ${props => props.theme.layout.contentwidth};
-
+	
 	.row {
 		align-items: center;
+		background: ${props => props.theme.color.white};
 		border-bottom: 1px solid ${props => props.theme.color.darkgrey};
 		display: flex;
 		justify-content: space-between;
 
-		&:last-child {
+		&:nth-last-child(2) {
 			border: none;
 		}
 	}
