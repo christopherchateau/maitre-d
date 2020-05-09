@@ -1,5 +1,18 @@
 # Welcome to maître d'
 
+### Screenshots:
+
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop1.png" width="1000px" />
+
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop2.png" width="1000px" />
+
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/tablet.png" width="800px" />
+
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/phone.png" width="600px" />
+
+### Original Wireframe
+
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/wireframe.jpg" width="600px" />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
