@@ -19,7 +19,9 @@ const Row = ({ name, city, state, telephone, genre, attire, website }) => {
 					extraInfoToggle ? '' : ' hide'
 				)}>
 				<h3 className='row-item extra-item'>{attire}</h3>
-				<h3 className='row-item extra-item website'>{website}</h3>
+				<a href={website}>
+					<h3 className='row-item extra-item website'>{website}</h3>
+				</a>
 			</div>
 		</RowTheme>
 	)
@@ -78,7 +80,12 @@ const RowTheme = styled.div`
 		@media (max-width: ${props => props.theme.breakpoint.smallphone}) {
 			font-size: ${props => props.theme.font.size.medium};
 		}
-	}
+    }
+    
+    a:link,
+    a:visited {
+        color: ${props => props.theme.color.black};
+    }
 
 	.extra-info {
 		flex-direction: column;
