@@ -8,11 +8,11 @@
 
 <img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/tablet.png" width="800px" />
 
-<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/phone.png" width="600px" />
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/phone.png" width="400px" />
 
 ### Original Wireframe
 
-<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/wireframe.jpg" width="600px" />
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/wireframe.jpg" width="400px" />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
