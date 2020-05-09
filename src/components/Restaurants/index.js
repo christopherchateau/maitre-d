@@ -8,7 +8,7 @@ const Restaurants = () => {
 
 	const [paginationIndex, setPaginationIndex] = useState(0)
 
-	const filteredByState = !!filters.state
+	const filteredByState = filters.state
 	const displayRestaurants = filteredRestaurants()
 	const displayCount = displayRestaurants.length
 	const canGoForward = paginationIndex + 10 < displayCount
@@ -40,7 +40,9 @@ const Restaurants = () => {
 								<h3 className='row-item'>{name}</h3>
 								<h3 className='row-item'>{`${city}, ${state}`}</h3>
 								<h3 className='row-item'>{telephone}</h3>
-								<h3 className='row-item'>{genre.join(', ')}</h3>
+								<h3 className='row-item genres'>
+									{genre.join(', ')}
+								</h3>
 							</div>
 						)
 					})
@@ -57,7 +59,7 @@ export default Restaurants
 const RestaurantsTheme = styled.div`
 	max-width: ${props => props.theme.layout.maxwidth};
 	width: ${props => props.theme.layout.contentwidth};
-
+	
 	.row {
 		align-items: center;
 		background: ${props => props.theme.color.white};
@@ -68,6 +70,10 @@ const RestaurantsTheme = styled.div`
 		&:nth-last-child(2) {
 			border: none;
 		}
+
+		@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+			flex-direction: column;
+		}
 	}
 
 	.row-item {
@@ -76,9 +82,25 @@ const RestaurantsTheme = styled.div`
 		padding: ${props => props.theme.spacing.xlarge} ${props => props.theme.spacing.medium};
 		text-align: center;
 		width: 25%;
+
+		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+			font-size: ${props => props.theme.font.size.small};
+			padding: ${props => props.theme.spacing.medium} ${props => props.theme.spacing.small};
+		}
+
+		@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+			font-size: ${props => props.theme.font.size.large};
+			width: 100%;
+		}
 	}
 
+	.genres {
+		@media (max-width: ${props => props.theme.breakpoint.smallphone}) {
+			font-size: ${props => props.theme.font.size.medium};
+		}
+	}
 	.no-states-msg {
+		background: ${props => props.theme.color.white};
 		width: 100%;
 	}
 `

@@ -19,6 +19,10 @@ const MainPageTheme = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 2rem;
+	padding: ${props => props.theme.spacing.xlarge};
 	width: 100vw;
+
+	@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+		padding: ${props => props.theme.spacing.medium};	
+	}
 `

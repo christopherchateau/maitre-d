@@ -75,11 +75,19 @@ const MenuTheme = styled.div`
 	margin-top: ${props => props.theme.spacing.medium};
 	margin-right: ${props => props.theme.spacing.large};
 
+	@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+		margin-right: ${props => props.theme.spacing.small};
+	}
+
 	.menu-type {
 		font-size: ${props => props.theme.font.size.large};
 		font-weight: ${props => props.theme.font.weight.light};
 		margin: ${props => props.theme.spacing.small};
 		margin-right: ${props => props.theme.spacing.medium};
+
+		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+			font-size: ${props => props.theme.font.size.medium};
+		}
 	}
 
 	select {
@@ -87,6 +95,16 @@ const MenuTheme = styled.div`
 		height: ${props => props.theme.spacing.xxlarge};
 		max-width: 10rem;
 		padding: ${props => props.theme.spacing.small};
+
+		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+			font-size: ${props => props.theme.font.size.small};
+			height: ${props => props.theme.spacing.xlarge};
+			padding: ${props => props.theme.spacing.xsmall};
+		}
+
+		@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+			width: 8rem;
+		}
 	}
 
 	button {
@@ -99,6 +117,10 @@ const MenuTheme = styled.div`
 			background: ${props => props.theme.color.darkgrey};
 			color: ${props => props.theme.color.white};
 			transition: all 0.5s ease-out;
+		}
+
+		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+			height: ${props => props.theme.spacing.xlarge};
 		}
 	}
 `

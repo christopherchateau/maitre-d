@@ -31,7 +31,7 @@ const PaginationControlsTheme = styled.div`
 	background: ${props => props.theme.color.white};
 	display: flex;
 	justify-content: space-evenly;
-	margin: ${props => props.theme.spacing.xlarge} 0;
+	margin: ${props => props.theme.spacing.medium} 0;
 	padding: ${props => props.theme.spacing.large};
 
 	button {
@@ -45,6 +45,11 @@ const PaginationControlsTheme = styled.div`
 			background: ${props => props.theme.color.darkgrey};
 			color: ${props => props.theme.color.white};
 			transition: all 0.5s ease-out;
+		}
+
+		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+			font-size: ${props => props.theme.font.size.medium};
+			width: 30%;
 		}
 	}
 `
