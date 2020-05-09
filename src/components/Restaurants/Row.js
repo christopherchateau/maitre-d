@@ -7,8 +7,8 @@ const Row = ({ name, city, state, telephone, genre, attire, website }) => {
 	const handleRowClick = () => setExtraInfoToggle(!extraInfoToggle)
 
 	return (
-		<RowTheme>
-			<div onClick={handleRowClick} className='row' key={telephone}>
+		<RowTheme onClick={handleRowClick}>
+			<div className='row' key={telephone}>
 				<h3 className='row-item'>{name}</h3>
 				<h3 className='row-item'>{`${city}, ${state}`}</h3>
 				<h3 className='row-item'>{telephone}</h3>
