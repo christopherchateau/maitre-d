@@ -25,6 +25,10 @@ const LogoTheme = styled.div`
 		position: relative;
 		margin: 0;
 		text-align: right;
+
+		@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+			font-size: ${props => props.theme.font.size.large};
+		}
 	}
 
 	img {
@@ -32,5 +36,11 @@ const LogoTheme = styled.div`
 		margin-left: ${props => props.theme.spacing.small};
 		position: absolute;
 		top: ${props => props.theme.spacing.small};
+
+		@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+			height: 2rem;
+			margin-left: ${props => props.theme.spacing.xsmall};
+			top: 0;
+		}
 	}
 `
