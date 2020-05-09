@@ -24,4 +24,8 @@ export default MenuControls
 const MenuControlsTheme = styled.div`
 	display: flex;
 	flex-wrap: wrap;
+
+	@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+		justify-content: center;
+	}
 `

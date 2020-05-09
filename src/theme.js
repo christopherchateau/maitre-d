@@ -14,6 +14,7 @@ export default {
 	font: {
 		family: 'sans-serif',
 		size: {
+			xsmall: '.8rem',
 			small: '.9rem',
 			medium: '1rem',
 			large: '1.6rem',

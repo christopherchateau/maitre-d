@@ -45,6 +45,15 @@ const SearchControlsTheme = styled.form`
 		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
 			font-size: ${props => props.theme.font.size.medium};
 		}
+
+		@media (max-width: ${props => props.theme.breakpoint.smallphone}) {
+			margin: auto 5%;	
+			width: 90%;
+
+			&:last-child {
+				margin-top: ${props => props.theme.spacing.medium};
+			}
+		}
 	}
 
 	button {

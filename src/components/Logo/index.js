@@ -18,6 +18,10 @@ const LogoTheme = styled.div`
 	padding-right: ${props => props.theme.spacing.xxxlarge};
 	width: ${props => props.theme.layout.contentwidth};
 
+	@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+		padding-right: ${props => props.theme.spacing.xxlarge};
+	}
+
 	h1 {
 		font-family: ${props => props.theme.font.family};
 		font-size: ${props => props.theme.font.size.xlarge};

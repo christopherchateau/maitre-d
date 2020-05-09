@@ -40,7 +40,9 @@ const Restaurants = () => {
 								<h3 className='row-item'>{name}</h3>
 								<h3 className='row-item'>{`${city}, ${state}`}</h3>
 								<h3 className='row-item'>{telephone}</h3>
-								<h3 className='row-item'>{genre.join(', ')}</h3>
+								<h3 className='row-item genres'>
+									{genre.join(', ')}
+								</h3>
 							</div>
 						)
 					})
@@ -68,6 +70,10 @@ const RestaurantsTheme = styled.div`
 		&:nth-last-child(2) {
 			border: none;
 		}
+
+		@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+			flex-direction: column;
+		}
 	}
 
 	.row-item {
@@ -81,8 +87,18 @@ const RestaurantsTheme = styled.div`
 			font-size: ${props => props.theme.font.size.small};
 			padding: ${props => props.theme.spacing.medium} ${props => props.theme.spacing.small};
 		}
+
+		@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+			font-size: ${props => props.theme.font.size.large};
+			width: 100%;
+		}
 	}
 
+	.genres {
+		@media (max-width: ${props => props.theme.breakpoint.smallphone}) {
+			font-size: ${props => props.theme.font.size.medium};
+		}
+	}
 	.no-states-msg {
 		width: 100%;
 	}

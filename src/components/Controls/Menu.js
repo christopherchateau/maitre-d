@@ -101,6 +101,10 @@ const MenuTheme = styled.div`
 			height: ${props => props.theme.spacing.xlarge};
 			padding: ${props => props.theme.spacing.xsmall};
 		}
+
+		@media (max-width: ${props => props.theme.breakpoint.largephone}) {
+			width: 8rem;
+		}
 	}
 
 	button {
