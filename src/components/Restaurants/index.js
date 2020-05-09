@@ -76,6 +76,11 @@ const RestaurantsTheme = styled.div`
 		padding: ${props => props.theme.spacing.xlarge} ${props => props.theme.spacing.medium};
 		text-align: center;
 		width: 25%;
+
+		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+			font-size: ${props => props.theme.font.size.small};
+			padding: ${props => props.theme.spacing.medium} ${props => props.theme.spacing.small};
+		}
 	}
 
 	.no-states-msg {

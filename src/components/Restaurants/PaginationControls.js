@@ -46,5 +46,10 @@ const PaginationControlsTheme = styled.div`
 			color: ${props => props.theme.color.white};
 			transition: all 0.5s ease-out;
 		}
+
+		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+			font-size: ${props => props.theme.font.size.medium};
+			width: 30%;
+		}
 	}
 `
