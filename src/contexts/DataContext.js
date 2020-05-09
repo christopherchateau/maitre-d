@@ -18,12 +18,12 @@ const DataContextProvider = props => {
 	}, [])
 
 	const loadData = async () => {
-		const presetMenus = ['name', 'state', 'genre', 'attire']
+		const defaultMenus = ['state', 'genre', 'attire', 'tags']
 
 		setRestaurants(
 			await getData('restaurants')
 		)
-		presetMenus.map(menu => updateFilters(menu))
+		defaultMenus.map(menu => updateFilters(menu))
 	}
 
 	const availableFilters = () => {
