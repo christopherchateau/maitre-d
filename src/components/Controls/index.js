@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import MenuControls from './MenuControls'
 import SearchControls from './SearchControls'
+import styled from 'styled-components'
 
 const Controls = () => (
 	<ControlsTheme>

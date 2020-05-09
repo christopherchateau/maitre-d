@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { getData, getMockRestaurants } from '../utilities/apiCalls'
+import { getData } from '../utilities/apiCalls'
 import { capitalizeFirstChar } from '../utilities/helper'
 
 export const DataContext = createContext()
@@ -12,8 +12,6 @@ const DataContextProvider = props => {
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
 	const menus = Object.keys(filters)
-	const restaurantAttributes =
-		(restaurants && Object.keys(restaurants[0])) || []
 
 	useEffect(() => {
 		loadData()
@@ -23,16 +21,19 @@ const DataContextProvider = props => {
 		const presetMenus = ['name', 'state', 'genre', 'attire']
 
 		setRestaurants(
-			getMockRestaurants()
-			// await getData('restaurants')
+			await getData('restaurants')
 		)
 		presetMenus.map(menu => updateFilters(menu))
 	}
 
-	const availableFilters = () =>
-		restaurantAttributes
+	const availableFilters = () => {
+		const restaurantAttributes =
+			(restaurants && Object.keys(restaurants[0])) || []
+
+		return restaurantAttributes
 			.filter(attr => filters[attr] !== '')
 			.map(attr => capitalizeFirstChar(attr))
+	}
 
 	const filteredRestaurants = () => {
 		let result = []
@@ -41,7 +42,6 @@ const DataContextProvider = props => {
 			if (runFilters(restaurant) && runSearch(restaurant))
 				result.push(restaurant)
 		})
-
 		return result
 	}
 

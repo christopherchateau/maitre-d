@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
 import img from '../../images/logo.png'
+import styled from 'styled-components'
 
 const Logo = () => (
 	<LogoTheme>
@@ -26,8 +26,8 @@ const LogoTheme = styled.div`
 		font-family: ${props => props.theme.font.family};
 		font-size: ${props => props.theme.font.size.xlarge};
 		font-weight: ${props => props.theme.font.weight.light};
-		position: relative;
 		margin: 0;
+		position: relative;
 		text-align: right;
 
 		@media (max-width: ${props => props.theme.breakpoint.largephone}) {

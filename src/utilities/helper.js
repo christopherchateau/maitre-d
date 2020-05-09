@@ -14,6 +14,7 @@ export const formatFetchedData = data => {
 					.sort()
 		})
 	})
+
 	return sortByKey(data, 'name')
 }
 

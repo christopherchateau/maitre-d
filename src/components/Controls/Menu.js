@@ -1,8 +1,8 @@
 import React, { useContext, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
-import styled from 'styled-components'
 import { staticMenuOptions } from './data'
 import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
+import styled from 'styled-components'
 
 const Menu = ({ type, addFilterMenu = false }) => {
 	const {
@@ -21,11 +21,12 @@ const Menu = ({ type, addFilterMenu = false }) => {
 	const generateMenu = () => {
 		const menuOptions = []
 		const formattedMenu = defaultOptions[type]
-			? defaultOptions[type].map(option => formatMenuOption(option))
-			: restaurants.reduce((formattedMenu, restaurant) => {
-					let values = restaurant[type]
 
-					values.forEach(value => {
+			? defaultOptions[type].map(option => formatMenuOption(option))
+
+			: restaurants.reduce((formattedMenu, restaurant) => {
+
+					restaurant[type].forEach(value => {
 						if (!menuOptions.includes(value)) {
 							menuOptions.push(value)
 							formattedMenu.push(formatMenuOption(value))
@@ -72,8 +73,8 @@ export default Menu
 const MenuTheme = styled.div`
 	align-items: center;
 	display: flex;
-	margin-top: ${props => props.theme.spacing.medium};
 	margin-right: ${props => props.theme.spacing.large};
+	margin-top: ${props => props.theme.spacing.medium};
 
 	@media (max-width: ${props => props.theme.breakpoint.desktop}) {
 		margin-right: ${props => props.theme.spacing.small};

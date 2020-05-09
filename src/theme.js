@@ -39,4 +39,7 @@ export default {
 		contentwidth: '100%',
 		maxwidth: '1200px',
 	},
+	loading: {
+		size: '6rem',
+	},
 }

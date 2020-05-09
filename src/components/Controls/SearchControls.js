@@ -47,7 +47,7 @@ const SearchControlsTheme = styled.form`
 		}
 
 		@media (max-width: ${props => props.theme.breakpoint.smallphone}) {
-			margin: auto 5%;	
+			margin: auto 5%;
 			width: 90%;
 
 			&:last-child {

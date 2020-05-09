@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { DataContext } from '../../contexts/DataContext'
-import styled from 'styled-components'
 import PaginationControls from './PaginationControls'
+import styled from 'styled-components'
 
 const Restaurants = () => {
 	const { filters, filteredRestaurants } = useContext(DataContext)
@@ -27,12 +27,13 @@ const Restaurants = () => {
 
 	return (
 		<RestaurantsTheme>
-			{!displayRestaurants.length && filteredByState ? (
-				<h3 className='row-item no-states-msg'>
+			{!displayRestaurants.length && filteredByState
+			
+				? <h3 className='row-item no-states-msg'>
 					No Results Found In This State
 				</h3>
-			) : (
-				displayRestaurants
+			
+				: displayRestaurants
 					.slice(paginationIndex, paginationIndex + 10)
 					.map(({ name, city, state, telephone, genre }) => {
 						return (
@@ -46,7 +47,7 @@ const Restaurants = () => {
 							</div>
 						)
 					})
-			)}
+			}
 			<PaginationControls
 				{...{ goBack, goForward, paginationIndex, canGoForward }}
 			/>
@@ -59,7 +60,7 @@ export default Restaurants
 const RestaurantsTheme = styled.div`
 	max-width: ${props => props.theme.layout.maxwidth};
 	width: ${props => props.theme.layout.contentwidth};
-	
+
 	.row {
 		align-items: center;
 		background: ${props => props.theme.color.white};

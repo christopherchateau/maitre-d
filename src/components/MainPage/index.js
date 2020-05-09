@@ -1,8 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import Logo from '../Logo'
 import Controls from '../Controls'
 import Restaurants from '../Restaurants'
+import styled from 'styled-components'
 
 const MainPage = () => (
 	<MainPageTheme>

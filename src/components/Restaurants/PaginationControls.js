@@ -4,8 +4,8 @@ import styled from 'styled-components'
 const PaginationControls = ({
 	goBack,
 	goForward,
-	paginationIndex,
 	canGoForward,
+	paginationIndex,
 }) => {
 	return (
 		<PaginationControlsTheme>

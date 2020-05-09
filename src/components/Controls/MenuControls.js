@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { DataContext } from '../../contexts/DataContext'
-import styled from 'styled-components'
 import Menu from './Menu'
+import styled from 'styled-components'
 
 const MenuControls = () => {
 	const { menus } = useContext(DataContext)
