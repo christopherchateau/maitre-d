@@ -8,7 +8,7 @@ const Restaurants = () => {
 
 	const [paginationIndex, setPaginationIndex] = useState(0)
 
-	const filteredByState = !!filters.state
+	const filteredByState = filters.state
 	const displayRestaurants = filteredRestaurants()
 	const displayCount = displayRestaurants.length
 	const canGoForward = paginationIndex + 10 < displayCount

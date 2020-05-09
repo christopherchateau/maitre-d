@@ -37,14 +37,17 @@ export default SearchControls
 const SearchControlsTheme = styled.form`
 	margin: ${props => props.theme.spacing.small};
 
-	input {
-		font-size: ${props => props.theme.font.size.large};
-		padding: ${props => props.theme.spacing.small};
-	}
-
+	input,
 	button {
 		font-size: ${props => props.theme.font.size.large};
 		padding: ${props => props.theme.spacing.small};
+
+		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
+			font-size: ${props => props.theme.font.size.medium};
+		}
+	}
+
+	button {
 		transition: all 0.5s ease-out;
 
 		&:hover:enabled {

@@ -14,6 +14,7 @@ const Logo = () => (
 export default Logo
 
 const LogoTheme = styled.div`
+	max-width: ${props => props.theme.layout.maxwidth};
 	padding-right: ${props => props.theme.spacing.xxxlarge};
 	width: ${props => props.theme.layout.contentwidth};
 

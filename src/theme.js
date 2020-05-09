@@ -26,6 +26,7 @@ export default {
 		},
 	},
 	spacing: {
+		xsmall: '.2rem',
 		small: '.4rem',
 		medium: '1rem',
 		large: '1.4rem',
@@ -34,7 +35,7 @@ export default {
 		xxxlarge: '4rem',
 	},
 	layout: {
-		contentwidth: '80%',
+		contentwidth: '100%',
 		maxwidth: '1200px',
 	},
 }
