@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { getData } from '../utilities/apiCalls'
+import { getData, getMockRestaurants } from '../utilities/apiCalls'
 import { capitalizeFirstChar } from '../utilities/helper'
 
 export const DataContext = createContext()
@@ -21,7 +21,8 @@ const DataContextProvider = props => {
 		const presetMenus = ['name', 'state', 'genre', 'attire']
 
 		setRestaurants(
-			await getData('restaurants')
+			getMockRestaurants()
+			// await getData('restaurants')
 		)
 		presetMenus.map(menu => updateFilters(menu))
 	}
