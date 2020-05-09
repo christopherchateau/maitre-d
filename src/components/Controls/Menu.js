@@ -21,9 +21,7 @@ const Menu = ({ type, addFilterMenu = false }) => {
 	const generateMenu = () => {
 		const menuOptions = []
 		const formattedMenu = defaultOptions[type]
-
 			? defaultOptions[type].map(option => formatMenuOption(option))
-
 			: restaurants.reduce((formattedMenu, restaurant) => {
 					let values = restaurant[type]
 
