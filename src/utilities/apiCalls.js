@@ -10,7 +10,7 @@ import { formatFetchedData as format } from './helper'
 // 		})
 // 		return format(await response.json())
 // 	} catch {
-// 		return { errors: ['Data failed to load'] }
+// 		return { errors: ['Data failed to load :('] }
 // 	}
 // }
 

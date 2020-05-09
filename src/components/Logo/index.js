@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
 import img from '../../images/logo.png'
+import styled from 'styled-components'
 
 const Logo = () => (
 	<LogoTheme>

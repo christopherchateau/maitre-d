@@ -12,8 +12,6 @@ const DataContextProvider = props => {
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
 	const menus = Object.keys(filters)
-	const restaurantAttributes =
-		(restaurants && Object.keys(restaurants[0])) || []
 
 	useEffect(() => {
 		loadData()
@@ -26,13 +24,17 @@ const DataContextProvider = props => {
 			getMockRestaurants()
 			// await getData('restaurants')
 		)
+
 		presetMenus.map(menu => updateFilters(menu))
 	}
 
-	const availableFilters = () =>
-		restaurantAttributes
+	const availableFilters = () => {
+		const restaurantAttributes = (restaurants && Object.keys(restaurants[0])) || []
+
+		return restaurantAttributes
 			.filter(attr => filters[attr] !== '')
-			.map(attr => capitalizeFirstChar(attr))
+			.map(attr => capitalizeFirstChar(attr)) || []
+	}
 
 	const filteredRestaurants = () => {
 		let result = []
@@ -53,6 +55,7 @@ const DataContextProvider = props => {
 				return false
 			}
 		}
+
 		return true
 	}
 
@@ -71,6 +74,7 @@ const DataContextProvider = props => {
 				return true
 			}
 		}
+
 		return false
 	}
 

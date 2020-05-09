@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
 import { DataContext } from '../../contexts/DataContext'
 import Errors from '../Errors'
 import Loading from '../Loading'
 import MainPage from '../MainPage'
+import styled from 'styled-components'
 
 const App = () => {
 	const { loading, errors } = useContext(DataContext)
