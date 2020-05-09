@@ -11,24 +11,22 @@ const Restaurants = () => {
 	const filteredByState = !!filters.state
 	const displayRestaurants = filteredRestaurants()
 	const displayCount = displayRestaurants.length
-	console.log(paginationIndex)
+	const canGoForward = paginationIndex + 10 < displayCount
+
 	useEffect(() => {
 		setPaginationIndex(0)
 	}, [displayCount])
 
 	const goBack = () => {
-		if (paginationIndex > 0)
-			setPaginationIndex(paginationIndex => paginationIndex - 10)
+		if (paginationIndex > 0) setPaginationIndex(paginationIndex - 10)
 	}
 
 	const goForward = () => {
-		if (paginationIndex + 10 < displayCount)
-			setPaginationIndex(paginationIndex => paginationIndex + 10)
+		if (canGoForward) setPaginationIndex(paginationIndex + 10)
 	}
 
 	return (
 		<RestaurantsTheme>
-			{console.log(paginationIndex)}
 			{!displayRestaurants.length && filteredByState ? (
 				<h3 className='row-item no-states-msg'>
 					No Results Found In This State
@@ -47,7 +45,9 @@ const Restaurants = () => {
 						)
 					})
 			)}
-			<PaginationControls {...{ goBack, goForward }} />
+			<PaginationControls
+				{...{ goBack, goForward, paginationIndex, canGoForward }}
+			/>
 		</RestaurantsTheme>
 	)
 }

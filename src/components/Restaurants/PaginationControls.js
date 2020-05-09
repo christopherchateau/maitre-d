@@ -1,13 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const PaginationControls = ({ goBack, goForward }) => {
+const PaginationControls = ({
+	goBack,
+	goForward,
+	paginationIndex,
+	canGoForward,
+}) => {
 	return (
 		<PaginationControlsTheme>
-			<button className='prev' onClick={goBack}>
+			<button
+				className='prev'
+				onClick={goBack}
+				disabled={paginationIndex === 0}>
 				Prev
 			</button>
-			<button className='next' onClick={goForward}>
+			<button
+				className='next'
+				onClick={goForward}
+				disabled={!canGoForward}>
 				Next
 			</button>
 		</PaginationControlsTheme>
@@ -24,13 +35,13 @@ const PaginationControlsTheme = styled.div`
 	padding: ${props => props.theme.spacing.large};
 
 	button {
-		cursor: pointer;
 		font-size: ${props => props.theme.font.size.large};
 		padding: ${props => props.theme.spacing.small};
 		transition: all 0.5s ease-out;
 		width: 10rem;
 
-		&:hover {
+		&:hover:enabled {
+			cursor: pointer;
 			background: ${props => props.theme.color.darkgrey};
 			color: ${props => props.theme.color.white};
 			transition: all 0.5s ease-out;
