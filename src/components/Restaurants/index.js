@@ -59,7 +59,7 @@ export default Restaurants
 const RestaurantsTheme = styled.div`
 	max-width: ${props => props.theme.layout.maxwidth};
 	width: ${props => props.theme.layout.contentwidth};
-
+	
 	.row {
 		align-items: center;
 		background: ${props => props.theme.color.white};
@@ -100,6 +100,7 @@ const RestaurantsTheme = styled.div`
 		}
 	}
 	.no-states-msg {
+		background: ${props => props.theme.color.white};
 		width: 100%;
 	}
 `

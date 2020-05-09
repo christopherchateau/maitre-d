@@ -31,7 +31,7 @@ const PaginationControlsTheme = styled.div`
 	background: ${props => props.theme.color.white};
 	display: flex;
 	justify-content: space-evenly;
-	margin: ${props => props.theme.spacing.xlarge} 0;
+	margin: ${props => props.theme.spacing.medium} 0;
 	padding: ${props => props.theme.spacing.large};
 
 	button {
