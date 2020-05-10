@@ -15,9 +15,7 @@ const Row = ({ name, city, state, telephone, genre, attire, website }) => {
 				<h3 className='row-item genres'>{genre.join(', ')}</h3>
 			</div>
 			<div
-				className={'row extra-info'.concat(
-					extraInfoToggle ? '' : ' hide'
-				)}>
+				className={'row extra-info'.concat(extraInfoToggle ? '' : ' hide')}>
 				<h3 className='row-item extra-item'>{attire}</h3>
 				<a target='_blank' rel='noopener noreferrer' href={website}>
 					<h3 className='row-item extra-item website'>{website}</h3>
@@ -40,8 +38,8 @@ const RowTheme = styled.div`
 	}
 
 	&:hover {
-		cursor: pointer;
 		background: ${props => props.theme.color.lightgrey};
+		cursor: pointer;
 		transition: all 0.5s ease-out;
 	}
 

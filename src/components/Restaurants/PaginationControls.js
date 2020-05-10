@@ -13,13 +13,13 @@ const PaginationControls = ({
 				className='prev'
 				onClick={goBack}
 				disabled={paginationIndex === 0}>
-				Prev
+				prev
 			</button>
 			<button
 				className='next'
 				onClick={goForward}
 				disabled={!canGoForward}>
-				Next
+				next
 			</button>
 		</PaginationControlsTheme>
 	)
@@ -38,12 +38,12 @@ const PaginationControlsTheme = styled.div`
 		font-size: ${props => props.theme.font.size.large};
 		padding: ${props => props.theme.spacing.small};
 		transition: all 0.5s ease-out;
-		width: 10rem;
+		width: 8rem;
 
 		&:hover:enabled {
-			cursor: pointer;
 			background: ${props => props.theme.color.darkgrey};
 			color: ${props => props.theme.color.white};
+			cursor: pointer;
 			transition: all 0.5s ease-out;
 		}
 

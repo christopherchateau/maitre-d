@@ -60,9 +60,9 @@ const SearchControlsTheme = styled.form`
 		transition: all 0.5s ease-out;
 
 		&:hover:enabled {
-			cursor: pointer;
 			background: ${props => props.theme.color.darkgrey};
 			color: ${props => props.theme.color.white};
+			cursor: pointer;
 			transition: all 0.5s ease-out;
 		}
 	}

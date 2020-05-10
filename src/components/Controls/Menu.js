@@ -44,11 +44,10 @@ const Menu = ({ type, addFilterMenu = false }) => {
 		return [formatMenuOption(firstOption), ...sortedMenu]
 	}
 
-	const formatMenuOption = str => (
+	const formatMenuOption = str =>
 		<option value={str} key={str}>
 			{str}
 		</option>
-	)
 
 	const handleBtnClick = () => removeFilter(type)
 
