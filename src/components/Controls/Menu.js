@@ -26,6 +26,7 @@ const Menu = ({ type, addFilterMenu = false }) => {
 
 			: restaurants.reduce((formattedMenu, restaurant) => {
 
+					// collect all menu options without duplicates
 					restaurant[type].forEach(value => {
 						if (!menuOptions.includes(value)) {
 							menuOptions.push(value)
@@ -34,6 +35,7 @@ const Menu = ({ type, addFilterMenu = false }) => {
 					})
 
 					return formattedMenu
+
 			  }, [])
 
 		const sortedMenu = sortByKey(formattedMenu)

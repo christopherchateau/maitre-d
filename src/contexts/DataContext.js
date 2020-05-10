@@ -35,6 +35,7 @@ const DataContextProvider = props => {
 				availableFilters.push(capitalizeFirstChar(type))
 
 			return availableFilters
+
 		}, [])
 	}
 
@@ -45,6 +46,7 @@ const DataContextProvider = props => {
 			if (runFilters(restaurant) && runSearch(restaurant))
 				result.push(restaurant)
 		})
+
 		return result
 	}
 
@@ -56,6 +58,7 @@ const DataContextProvider = props => {
 				return false
 			}
 		}
+
 		return true
 	}
 
