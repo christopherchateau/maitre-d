@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
-import { staticMenuOptions } from './data'
+import { defaultMenuOptions } from './data'
 import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 import styled from 'styled-components'
 
@@ -15,7 +15,7 @@ const Menu = ({ type, addFilterMenu = false }) => {
 	const menuRef = useRef()
 
 	const defaultOptions = {
-		...{ ...staticMenuOptions, 'Add Filter': availableFilters() },
+		...{ ...defaultMenuOptions, 'Add Filter': availableFilters() },
 	}
 
 	const generateMenu = () => {

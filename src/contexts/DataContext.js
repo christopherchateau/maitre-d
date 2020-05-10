@@ -23,16 +23,19 @@ const DataContextProvider = props => {
 		setRestaurants(
 			await getData('restaurants')
 		)
+
 		defaultMenus.map(menu => updateFilters(menu))
 	}
 
 	const availableFilters = () => {
-		const restaurantAttributes =
-			(restaurants && Object.keys(restaurants[0])) || []
+		const filterTypes = (restaurants && Object.keys(restaurants[0])) || []
 
-		return restaurantAttributes
-			.filter(attr => filters[attr] !== '')
-			.map(attr => capitalizeFirstChar(attr))
+		return filterTypes.reduce((availableFilters, type) => {
+			if (filters[type] !== '')
+				availableFilters.push(capitalizeFirstChar(type))
+
+			return availableFilters
+		}, [])
 	}
 
 	const filteredRestaurants = () => {
