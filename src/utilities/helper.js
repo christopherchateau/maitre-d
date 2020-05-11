@@ -7,11 +7,10 @@ export const formatFetchedData = data => {
 			// covert all values into arrays
 			item[key] = item[key].split(',')
 
-			// standardize capitalization and alphabetize specific values
+			// standardize capitalization for specified values
 			if (standardizeText.includes(key))
 				item[key] = item[key]
 					.map(str => capitalizeFirstChar(str))
-					.sort()
 		})
 	})
 
