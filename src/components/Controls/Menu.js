@@ -26,17 +26,17 @@ const Menu = ({ type, addFilterMenu = false }) => {
 
 			: restaurants.reduce((formattedMenu, restaurant) => {
 
-					// collect all menu options without duplicates
-					restaurant[type].forEach(value => {
-						if (!menuOptions.includes(value)) {
-							menuOptions.push(value)
-							formattedMenu.push(formatMenuOption(value))
-						}
-					})
+				// collect all menu options without duplicates
+				restaurant[type].forEach(value => {
+					if (!menuOptions.includes(value)) {
+						menuOptions.push(value)
+						formattedMenu.push(formatMenuOption(value))
+					}
+				})
 
-					return formattedMenu
+				return formattedMenu
 
-			  }, [])
+			}, [])
 
 		const sortedMenu = sortByKey(formattedMenu)
 		const firstOption = addFilterMenu ? '' : 'All'
