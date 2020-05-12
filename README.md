@@ -8,8 +8,6 @@
 
 <img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop2.png" width="1000px" />
 
-<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop3.png" width="1000px" />
-
 #### Tablet:
 
 <img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/tablet.png" width="800px" />
