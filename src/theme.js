@@ -40,6 +40,6 @@ export default {
 		maxwidth: '1200px',
 	},
 	loading: {
-		size: '6rem',
+		size: '8rem',
 	},
 }

@@ -50,14 +50,14 @@ const Restaurants = () => {
 export default Restaurants
 
 const RestaurantsTheme = styled.div`
-	animation: list 1.2s ease-out forwards;
+	animation: list 3s ease-out forwards;
 	max-width: ${props => props.theme.layout.maxwidth};
 	transform-origin: top;
 	width: ${props => props.theme.layout.contentwidth};
 
 	@keyframes list {
 		0% {
-			transform:scaleY(.5);
+			transform:scaleY(0);
 		}
 		100% {
 			transform:scaleY(1);
