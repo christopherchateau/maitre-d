@@ -3,6 +3,7 @@ import { DataContext } from '../../contexts/DataContext'
 import Errors from '../Errors'
 import Loading from '../Loading'
 import MainPage from '../MainPage'
+import backgroundImg from '../../images/background.jpg'
 import styled from 'styled-components'
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
 
 	return (
 		<AppTheme>
+			<div className='background'></div>
 			{loading ? <Loading /> : errors ? <Errors /> : <MainPage />}
 		</AppTheme>
 	)
@@ -23,9 +25,23 @@ const AppTheme = styled.div`
 	}
 
 	align-items: center;
-	background: ${props => props.theme.color.lightgrey};
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	min-height: 100vh;
+	width: 100vw;
+	position: relative;
+
+	.background {
+		background-attachment: fixed;
+		background-position: top;
+		background-image: url(${backgroundImg});
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 100%;
+		opacity: .8;
+		position: absolute;
+		width: 100%;
+		z-index: -1;
+	}
 `

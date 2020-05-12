@@ -1,5 +1,7 @@
 # Welcome to Maître D'!
 
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/fade-in.gif" width="600px" />
+
 ## Screenshots:
 
 #### Desktop:
@@ -7,8 +9,6 @@
 <img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop1.png" width="1000px" />
 
 <img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop2.png" width="1000px" />
-
-<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop3.png" width="1000px" />
 
 #### Tablet:
 

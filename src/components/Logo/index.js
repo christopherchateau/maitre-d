@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../../images/logo.png'
+import img from '../../images/logo-white.png'
 import styled from 'styled-components'
 
 const Logo = () => (
@@ -14,15 +14,29 @@ const Logo = () => (
 export default Logo
 
 const LogoTheme = styled.div`
-	max-width: ${props => props.theme.layout.maxwidth};
+	animation: logo 2s ease-out forwards;
 	padding-right: ${props => props.theme.spacing.xxxlarge};
 	width: ${props => props.theme.layout.contentwidth};
+
+
+	@keyframes logo {
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 
 	@media (max-width: ${props => props.theme.breakpoint.largephone}) {
 		padding-right: ${props => props.theme.spacing.xxlarge};
 	}
 
 	h1 {
+		color: white;
 		font-family: ${props => props.theme.font.family};
 		font-size: ${props => props.theme.font.size.xlarge};
 		font-weight: ${props => props.theme.font.weight.light};

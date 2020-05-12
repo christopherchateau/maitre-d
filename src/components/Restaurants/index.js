@@ -50,14 +50,13 @@ const Restaurants = () => {
 export default Restaurants
 
 const RestaurantsTheme = styled.div`
-	animation: list 1.2s ease-out forwards;
-	max-width: ${props => props.theme.layout.maxwidth};
+	animation: list 3s ease-out forwards;
 	transform-origin: top;
 	width: ${props => props.theme.layout.contentwidth};
 
 	@keyframes list {
 		0% {
-			transform:scaleY(.5);
+			transform:scaleY(0);
 		}
 		100% {
 			transform:scaleY(1);
@@ -69,6 +68,6 @@ const RestaurantsTheme = styled.div`
 		font-weight: ${props => props.theme.font.weight.light};
 		padding: ${props => props.theme.spacing.xlarge};
 		text-align: center;
-		width: 100%;
+		width: ${props => props.theme.layout.contentwidth};
 	}
 `
