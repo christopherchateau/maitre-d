@@ -4,7 +4,7 @@ import { defaultMenuOptions } from './data'
 import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 import styled from 'styled-components'
 
-const Menu = ({ type, addFilterMenu = false }) => {
+const Menu = ({ type }) => {
 	const {
 		restaurants,
 		removeFilter,
@@ -14,6 +14,7 @@ const Menu = ({ type, addFilterMenu = false }) => {
 
 	const menuRef = useRef()
 
+	const addFilterMenu = type === 'Add Filter'
 	const defaultOptions = {
 		...{ ...defaultMenuOptions, 'Add Filter': availableFilters() },
 	}
