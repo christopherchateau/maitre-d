@@ -6,19 +6,19 @@
 
 #### Desktop:
 
-<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop1.png" width="1000px" />
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop-1.png" width="1000px" />
 
-<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop2.png" width="1000px" />
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/desktop-2.png" width="1000px" />
 
 #### Tablet:
 
-<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/tablet.png" width="800px" />
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/tablet-1.png" width="800px" />
 
 #### Mobile:
 
-<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/phone.png" width="400px" />
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/phone-1.png" width="400px" />
 
-<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/phone2.png" width="400px" />
+<img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/phone-2.png" width="400px" />
 
 #### Original Wireframe
 
