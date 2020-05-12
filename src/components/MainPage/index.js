@@ -21,8 +21,9 @@ const MainPageTheme = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	max-width: ${props => props.theme.layout.pagewidth};
 	padding: ${props => props.theme.spacing.xlarge};
-	width: 100vw;
+	width: 90vw;
 
 	@media (max-width: ${props => props.theme.breakpoint.desktop}) {
 		padding: ${props => props.theme.spacing.medium};
@@ -30,6 +31,7 @@ const MainPageTheme = styled.div`
 
 	.main-content {
 		animation: main 3s ease-out forwards;
+		width: ${props => props.theme.layout.contentwidth};
 
 		@keyframes main {
 			0% {

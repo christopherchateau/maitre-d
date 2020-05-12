@@ -37,7 +37,7 @@ export default {
 	},
 	layout: {
 		contentwidth: '100%',
-		maxwidth: '1200px',
+		pagewidth: '1200px',
 	},
 	loading: {
 		size: '8rem',

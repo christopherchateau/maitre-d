@@ -29,7 +29,7 @@ const AppTheme = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	min-height: 100vh;
-	min-width: 100vw;
+	width: 100vw;
 	position: relative;
 
 	.background {
