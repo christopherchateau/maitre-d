@@ -34,7 +34,7 @@ const AppTheme = styled.div`
 
 	.background {
 		background-attachment: fixed;
-		background-position: top;
+		background-position: right;
 		background-image: url(${backgroundImg});
 		background-repeat: no-repeat;
 		background-size: cover;
