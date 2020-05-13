@@ -5,14 +5,22 @@ import PaginationControls from './PaginationControls'
 import styled from 'styled-components'
 
 const Restaurants = () => {
-	const { filters, filteredRestaurants } = useContext(DataContext)
+	const { filters, filteredRestaurants, statesWithNoResults } = useContext(
+		DataContext
+	)
 
 	const [paginationIndex, setPaginationIndex] = useState(0)
 
-	const filteredByState = filters.state
 	const displayRestaurants = filteredRestaurants()
 	const displayCount = displayRestaurants.length
 	const canGoForward = paginationIndex + 10 < displayCount
+
+	let noResults = 'No Results Found'
+	const selectedState = filters.state
+	
+	// advise if selected state has no restaurants
+	if (selectedState && statesWithNoResults.includes(selectedState))
+		noResults += ' For This State'
 
 	useEffect(() => {
 		setPaginationIndex(0)
@@ -28,18 +36,17 @@ const Restaurants = () => {
 
 	return (
 		<RestaurantsTheme>
-			{!displayRestaurants.length && filteredByState
+			{!displayRestaurants.length
+			
+			? <h3 className='no-results'>{noResults}</h3>
 
-				? <h3 className='no-states-msg'>
-					No Results Found In This State
-				</h3>
-
-				: displayRestaurants
-					.slice(paginationIndex, paginationIndex + 10)
-					.map(restaurant => (
-						<Row {...restaurant} key={restaurant.telephone} />
-					))
+			: displayRestaurants
+				.slice(paginationIndex, paginationIndex + 10)
+				.map(restaurant => (
+					<Row {...restaurant} key={restaurant.telephone} />
+				))
 			}
+
 			<PaginationControls
 				{...{ goBack, goForward, paginationIndex, canGoForward }}
 			/>
@@ -56,14 +63,14 @@ const RestaurantsTheme = styled.div`
 
 	@keyframes list {
 		0% {
-			transform:scaleY(0);
+			transform: scaleY(0);
 		}
 		100% {
-			transform:scaleY(1);
+			transform: scaleY(1);
 		}
 	}
 
-	.no-states-msg {
+	.no-results {
 		background: ${props => props.theme.color.white};
 		font-weight: ${props => props.theme.font.weight.light};
 		padding: ${props => props.theme.spacing.xlarge};

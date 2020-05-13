@@ -29,13 +29,13 @@ const AppTheme = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	min-height: 100vh;
-	width: 100vw;
 	position: relative;
+	width: 100vw;
 
 	.background {
 		background-attachment: fixed;
-		background-position: right;
 		background-image: url(${backgroundImg});
+		background-position: right;
 		background-repeat: no-repeat;
 		background-size: cover;
 		height: 100%;
