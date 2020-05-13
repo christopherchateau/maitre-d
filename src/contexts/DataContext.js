@@ -35,27 +35,23 @@ const DataContextProvider = props => {
 		defaultMenus.map(menu => updateFilters(menu))
 	}
 
-	const availableFilters = () => {
-		const filterTypes = (restaurants && Object.keys(restaurants[0])) || []
+	const updateFilters = (type, selection = '') =>
+		type === 'Add Filter'
+			? addFilter(selection)
+			: setFilters(prevFilters => ({ ...prevFilters, [type]: selection }))
 
-		return filterTypes.reduce((availableFilters, type) => {
-			if (filters[type] !== '')
-				availableFilters.push(capitalizeFirstChar(type))
+	const addFilter = type => updateFilters(type.toLowerCase())
 
-			return availableFilters
-		}, [])
-	}
-
-	const filteredRestaurants = () => {
-		let result = []
-
-		restaurants.forEach(restaurant => {
-			if (runFilters(restaurant) && runSearch(restaurant))
-				result.push(restaurant)
+	const removeFilter = type =>
+		setFilters(prevFilters => {
+			delete prevFilters[type]
+			return { ...prevFilters }
 		})
 
-		return result
-	}
+	const filteredRestaurants = () =>
+		restaurants.filter(
+			restaurant => runFilters(restaurant) && runSearch(restaurant)
+		)
 
 	const runFilters = restaurant => {
 		for (let i = 0; i < menus.length; i++) {
@@ -87,18 +83,16 @@ const DataContextProvider = props => {
 		return false
 	}
 
-	const updateFilters = (type, selection = '') =>
-		type === 'Add Filter'
-			? addFilter(selection)
-			: setFilters(prevFilters => ({ ...prevFilters, [type]: selection }))
+	const availableFilters = () => {
+		const filterTypes = (restaurants && Object.keys(restaurants[0])) || []
 
-	const addFilter = type => updateFilters(type.toLowerCase())
+		return filterTypes.reduce((availableFilters, type) => {
+			if (filters[type] !== '')
+				availableFilters.push(capitalizeFirstChar(type))
 
-	const removeFilter = type =>
-		setFilters(prevFilters => {
-			delete prevFilters[type]
-			return { ...prevFilters }
-		})
+			return availableFilters
+		}, [])
+	}
 
 	return (
 		<DataContext.Provider
