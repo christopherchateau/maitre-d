@@ -90,6 +90,7 @@ const MenuTheme = styled.div`
 		height: ${props => props.theme.spacing.xxlarge};
 		max-width: 10rem;
 		padding: ${props => props.theme.spacing.small};
+		-webkit-appearance: menulist-button;
 
 		@media (max-width: ${props => props.theme.breakpoint.desktop}) {
 			font-size: ${props => props.theme.font.size.small};
