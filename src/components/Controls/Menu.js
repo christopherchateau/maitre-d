@@ -1,18 +1,20 @@
 import React, { useContext, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
-import { defaultMenuOptions } from '../../data'
+import { allFilters, defaultMenuOptions } from '../../data'
 import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 import styled from 'styled-components'
 
 const Menu = ({ type }) => {
-	const {
-		restaurants,
-		removeFilter,
-		updateFilters,
-		unusedFilters,
-	} = useContext(DataContext)
+	const { restaurants, filters, removeFilter, updateFilters } = useContext(DataContext)
 
 	const menuRef = useRef()
+
+	const unusedFilters = allFilters.reduce((unusedFilters, type) => {
+		if (!(type in filters))
+			unusedFilters.push(capitalizeFirstChar(type))
+
+		return unusedFilters
+	}, [])
 
 	const addFilterMenu = type === 'Add Filter'
 	const defaultOptions = {
@@ -27,17 +29,16 @@ const Menu = ({ type }) => {
 
 			: restaurants.reduce((formattedMenu, restaurant) => {
 
-				// collect all menu options without duplicates
-				restaurant[type].forEach(value => {
-					if (!menuOptions.includes(value)) {
-						menuOptions.push(value)
-						formattedMenu.push(formatMenuOption(value))
-					}
-				})
+					// collect all menu options without duplicates
+					restaurant[type].forEach(value => {
+						if (!menuOptions.includes(value)) {
+							menuOptions.push(value)
+							formattedMenu.push(formatMenuOption(value))
+						}
+					})
 
-				return formattedMenu
-
-			}, [])
+					return formattedMenu
+			  }, [])
 
 		const sortedMenu = sortByKey(formattedMenu)
 		const firstOption = addFilterMenu ? '' : 'All'
