@@ -14,8 +14,11 @@ const Menu = ({ type, defaultOptions }) => {
 	const generateMenu = () => {
 		const menuOptions = []
 		const formattedMenu = defaultOptions
+
 			? defaultOptions.map(option => formatMenuOption(option))
+
 			: restaurants.reduce((formattedMenu, restaurant) => {
+
 					// collect all menu options without duplicates
 					restaurant[type].forEach(value => {
 						if (!menuOptions.includes(value)) {
