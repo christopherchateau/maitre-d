@@ -35,7 +35,6 @@ const AppTheme = styled.div`
 	justify-content: center;
 	min-height: 100vh;
 	position: relative;
-	width: 100vw;
 
 	.overlay {
 		background: ${props => props.theme.color.white};
