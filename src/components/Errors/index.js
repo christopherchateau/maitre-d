@@ -20,6 +20,6 @@ export default Errors
 const ErrorsTheme = styled.div`
 	background: ${props => props.theme.color.lightgrey};
 	max-width: ${props => props.theme.layout.maxwidth};
-	opacity: .8;
+	opacity: .7;
 	padding: ${props => props.theme.spacing.medium} ${props => props.theme.spacing.xxxlarge};
 `

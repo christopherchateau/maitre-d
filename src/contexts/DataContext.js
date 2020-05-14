@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { getData } from '../utilities/apiCalls'
-import { capitalizeFirstChar } from '../utilities/helper'
-import { defaultMenuOptions } from '../data'
+import { defaultFilters } from '../data'
 
 export const DataContext = createContext()
 
@@ -12,27 +11,17 @@ const DataContextProvider = props => {
 
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
-	const menus = Object.keys(filters)
-
-	const statesWithNoResults =
-		restaurants &&
-		defaultMenuOptions.state.filter(
-			state =>
-				!restaurants.some(restaurant => restaurant.state[0] === state)
-		)
 
 	useEffect(() => {
 		loadData()
 	}, [])
 
 	const loadData = async () => {
-		const defaultMenus = ['state', 'genre', 'attire', 'tags']
-
 		setRestaurants(
 			await getData('restaurants')
 		)
 
-		defaultMenus.map(menu => updateFilters(menu))
+		defaultFilters.map(filter => updateFilters(filter))
 	}
 
 	const updateFilters = (type, selection = '') =>
@@ -54,8 +43,10 @@ const DataContextProvider = props => {
 		)
 
 	const runFilters = restaurant => {
-		for (let i = 0; i < menus.length; i++) {
-			const type = menus[i]
+		const currentFilters = Object.keys(filters)
+
+		for (let i = 0; i < currentFilters.length; i++) {
+			const type = currentFilters[i]
 
 			if (filters[type] && !restaurant[type].includes(filters[type])) {
 				return false
@@ -76,28 +67,16 @@ const DataContextProvider = props => {
 				restaurant[type].some(type =>
 					type.toLowerCase().includes(search.toLowerCase())
 				)
-			) {
+			)
 				return true
-			}
 		}
+
 		return false
-	}
-
-	const availableFilters = () => {
-		const filterTypes = (restaurants && Object.keys(restaurants[0])) || []
-
-		return filterTypes.reduce((availableFilters, type) => {
-			if (filters[type] !== '')
-				availableFilters.push(capitalizeFirstChar(type))
-
-			return availableFilters
-		}, [])
 	}
 
 	return (
 		<DataContext.Provider
 			value={{
-				menus,
 				errors,
 				loading,
 				filters,
@@ -105,9 +84,7 @@ const DataContextProvider = props => {
 				restaurants,
 				removeFilter,
 				updateFilters,
-				availableFilters,
 				filteredRestaurants,
-				statesWithNoResults,
 			}}>
 			{props.children}
 		</DataContext.Provider>

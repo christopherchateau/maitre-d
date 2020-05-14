@@ -1,3 +1,7 @@
+export const defaultFilters = ['state', 'genre']
+
+export const allFilters = ['state', 'genre', 'city', 'attire', 'tags', 'name']
+
 export const defaultMenuOptions = {
 	state: [
 		'AK',

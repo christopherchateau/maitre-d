@@ -2,10 +2,11 @@ import React, { useContext, useState, useEffect } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import Row from './Row'
 import PaginationControls from './PaginationControls'
+import { defaultMenuOptions } from '../../data'
 import styled from 'styled-components'
 
 const Restaurants = () => {
-	const { filters, filteredRestaurants, statesWithNoResults } = useContext(
+	const { restaurants, filters, filteredRestaurants } = useContext(
 		DataContext
 	)
 
@@ -16,11 +17,17 @@ const Restaurants = () => {
 	const canGoForward = paginationIndex + 10 < displayCount
 
 	let noResults = 'No Results Found'
-	const selectedState = filters.state
-	
-	// advise if selected state has no restaurants
-	if (selectedState && statesWithNoResults.includes(selectedState))
-		noResults += ' For This State'
+
+	if ('state' in filters) {
+		const statesWithNoResults = defaultMenuOptions.state.filter(
+			state =>
+				!restaurants.some(restaurant => restaurant.state[0] === state)
+		)
+
+		// advise if selected state has no restaurants
+		if (statesWithNoResults.includes(filters.state))
+			noResults += ' For This State'
+	}
 
 	useEffect(() => {
 		setPaginationIndex(0)

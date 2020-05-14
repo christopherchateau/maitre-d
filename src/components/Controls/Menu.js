@@ -1,29 +1,21 @@
 import React, { useContext, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
-import { defaultMenuOptions } from '../../data'
 import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 import styled from 'styled-components'
 
-const Menu = ({ type }) => {
-	const {
-		restaurants,
-		removeFilter,
-		updateFilters,
-		availableFilters,
-	} = useContext(DataContext)
+const Menu = ({ type, defaultOptions }) => {
+	const { restaurants, removeFilter, updateFilters } = useContext(
+		DataContext
+	)
 
 	const menuRef = useRef()
-
 	const addFilterMenu = type === 'Add Filter'
-	const defaultOptions = {
-		...{ ...defaultMenuOptions, 'Add Filter': availableFilters() },
-	}
 
 	const generateMenu = () => {
 		const menuOptions = []
-		const formattedMenu = defaultOptions[type]
+		const formattedMenu = defaultOptions
 
-			? defaultOptions[type].map(option => formatMenuOption(option))
+			? defaultOptions.map(option => formatMenuOption(option))
 
 			: restaurants.reduce((formattedMenu, restaurant) => {
 

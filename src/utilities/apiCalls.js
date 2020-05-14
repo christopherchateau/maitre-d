@@ -9,8 +9,8 @@ export const getData = async path => {
 			headers: { Authorization: apiKey },
 		})
 		return format(await response.json())
-	} catch {
-		return { errors: ['Data failed to load'] }
+	} catch (error) {
+		return { errors: [error.message] }
 	}
 }
 
