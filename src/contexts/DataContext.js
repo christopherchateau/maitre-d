@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { getData, getMockRestaurants } from '../utilities/apiCalls'
 import { capitalizeFirstChar } from '../utilities/helper'
-import { allFilters, defaultFilters, defaultMenuOptions } from '../data'
+import { allFilters, defaultFilters } from '../data'
 
 export const DataContext = createContext()
 
@@ -20,14 +20,6 @@ const DataContextProvider = props => {
 				unusedFilters.push(capitalizeFirstChar(type))
 			return unusedFilters
 		}, [])
-
-	const statesWithNoResults =
-		restaurants &&
-		restaurants.length &&
-		defaultMenuOptions.state.filter(
-			state =>
-				!restaurants.some(restaurant => restaurant.state[0] === state)
-		)
 
 	useEffect(() => {
 		loadData()
@@ -103,7 +95,6 @@ const DataContextProvider = props => {
 				updateFilters,
 				unusedFilters,
 				filteredRestaurants,
-				statesWithNoResults,
 			}}>
 			{props.children}
 		</DataContext.Provider>
