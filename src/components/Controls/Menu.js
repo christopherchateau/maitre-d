@@ -1,34 +1,21 @@
 import React, { useContext, useRef } from 'react'
 import { DataContext } from '../../contexts/DataContext'
-import { allFilters, defaultMenuOptions } from '../../data'
 import { sortByKey, capitalizeFirstChar } from '../../utilities/helper'
 import styled from 'styled-components'
 
-const Menu = ({ type }) => {
-	const { restaurants, filters, removeFilter, updateFilters } = useContext(DataContext)
+const Menu = ({ type, defaultOptions }) => {
+	const { restaurants, removeFilter, updateFilters } = useContext(
+		DataContext
+	)
 
 	const menuRef = useRef()
-
-	const unusedFilters = allFilters.reduce((unusedFilters, type) => {
-		if (!(type in filters))
-			unusedFilters.push(capitalizeFirstChar(type))
-
-		return unusedFilters
-	}, [])
-
 	const addFilterMenu = type === 'Add Filter'
-	const defaultOptions = {
-		...{ ...defaultMenuOptions, 'Add Filter': unusedFilters },
-	}
 
 	const generateMenu = () => {
 		const menuOptions = []
-		const formattedMenu = defaultOptions[type]
-
-			? defaultOptions[type].map(option => formatMenuOption(option))
-
+		const formattedMenu = defaultOptions
+			? defaultOptions.map(option => formatMenuOption(option))
 			: restaurants.reduce((formattedMenu, restaurant) => {
-
 					// collect all menu options without duplicates
 					restaurant[type].forEach(value => {
 						if (!menuOptions.includes(value)) {
@@ -46,10 +33,11 @@ const Menu = ({ type }) => {
 		return [formatMenuOption(firstOption), ...sortedMenu]
 	}
 
-	const formatMenuOption = str =>
+	const formatMenuOption = str => (
 		<option value={str} key={str}>
 			{str}
 		</option>
+	)
 
 	const handleBtnClick = () => removeFilter(type)
 

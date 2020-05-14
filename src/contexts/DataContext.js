@@ -11,7 +11,6 @@ const DataContextProvider = props => {
 
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
-	const menus = Object.keys(filters)
 
 	useEffect(() => {
 		loadData()
@@ -45,8 +44,10 @@ const DataContextProvider = props => {
 		)
 
 	const runFilters = restaurant => {
-		for (let i = 0; i < menus.length; i++) {
-			const type = menus[i]
+		const currentFilters = Object.keys(filters)
+
+		for (let i = 0; i < currentFilters.length; i++) {
+			const type = currentFilters[i]
 
 			if (filters[type] && !restaurant[type].includes(filters[type])) {
 				return false
@@ -67,17 +68,16 @@ const DataContextProvider = props => {
 				restaurant[type].some(type =>
 					type.toLowerCase().includes(search.toLowerCase())
 				)
-			) {
+			)
 				return true
-			}
 		}
+
 		return false
 	}
 
 	return (
 		<DataContext.Provider
 			value={{
-				menus,
 				errors,
 				loading,
 				filters,

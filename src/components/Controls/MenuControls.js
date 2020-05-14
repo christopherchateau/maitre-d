@@ -2,18 +2,35 @@ import React, { useContext } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import Menu from './Menu'
 import styled from 'styled-components'
+import { allFilters, defaultMenuOptions } from '../../data'
+import { capitalizeFirstChar } from '../../utilities/helper'
 
 const MenuControls = () => {
-	const { menus } = useContext(DataContext)
+	const { filters } = useContext(DataContext)
 
-	return (
-		<MenuControlsTheme>
-			{menus.map(type =>
-				<Menu {...{ type, key: type }} />
-			)}
-			<Menu {...{ type: 'Add Filter' }} />
-		</MenuControlsTheme>
-	)
+	const unusedFilters = allFilters.reduce((unusedFilters, type) => {
+		if (!(type in filters)) unusedFilters.push(capitalizeFirstChar(type))
+		return unusedFilters
+	}, [])
+
+	const menus = Object.keys(filters).map(type => (
+		<Menu
+			{...{ type, defaultOptions: defaultMenuOptions[type], key: type }}
+		/>
+	))
+
+	if (unusedFilters.length)
+		menus.push(
+			<Menu
+				{...{
+					type: 'Add Filter',
+					defaultOptions: unusedFilters,
+					key: 'Add Filter',
+				}}
+			/>
+		)
+
+	return <MenuControlsTheme>{menus}</MenuControlsTheme>
 }
 
 export default MenuControls
