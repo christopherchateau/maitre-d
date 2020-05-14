@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { getData, getMockRestaurants } from '../utilities/apiCalls'
 import { capitalizeFirstChar } from '../utilities/helper'
-import { availableFilters, defaultFilters, defaultMenuOptions } from '../data'
+import { allFilters, defaultFilters, defaultMenuOptions } from '../data'
 
 export const DataContext = createContext()
 
@@ -13,6 +13,13 @@ const DataContextProvider = props => {
 	const loading = !restaurants
 	const errors = restaurants && restaurants.errors
 	const menus = Object.keys(filters)
+
+	const unusedFilters =
+		allFilters.reduce((unusedFilters, type) => {
+			if (!(type in filters))
+				unusedFilters.push(capitalizeFirstChar(type))
+			return unusedFilters
+		}, [])
 
 	const statesWithNoResults =
 		restaurants &&
@@ -28,8 +35,8 @@ const DataContextProvider = props => {
 
 	const loadData = async () => {
 		setRestaurants(
-			// getMockRestaurants()
-			await getData('restaurants')
+			getMockRestaurants()
+			// await getData('restaurants')
 		)
 
 		defaultFilters.map(filter => updateFilters(filter))
@@ -82,14 +89,6 @@ const DataContextProvider = props => {
 		}
 		return false
 	}
-
-	const unusedFilters = () =>
-		availableFilters.reduce((availableFilters, type) => {
-			if (filters[type] !== '')
-				availableFilters.push(capitalizeFirstChar(type))
-
-			return availableFilters
-		}, [])
 
 	return (
 		<DataContext.Provider

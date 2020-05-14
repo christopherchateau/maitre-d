@@ -16,7 +16,7 @@ const Menu = ({ type }) => {
 
 	const addFilterMenu = type === 'Add Filter'
 	const defaultOptions = {
-		...{ ...defaultMenuOptions, 'Add Filter': unusedFilters() },
+		...{ ...defaultMenuOptions, 'Add Filter': unusedFilters },
 	}
 
 	const generateMenu = () => {
