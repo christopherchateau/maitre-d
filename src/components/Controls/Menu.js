@@ -9,14 +9,14 @@ const Menu = ({ type }) => {
 		restaurants,
 		removeFilter,
 		updateFilters,
-		availableFilters,
+		unusedFilters,
 	} = useContext(DataContext)
 
 	const menuRef = useRef()
 
 	const addFilterMenu = type === 'Add Filter'
 	const defaultOptions = {
-		...{ ...defaultMenuOptions, 'Add Filter': availableFilters() },
+		...{ ...defaultMenuOptions, 'Add Filter': unusedFilters() },
 	}
 
 	const generateMenu = () => {
