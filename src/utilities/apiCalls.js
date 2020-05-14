@@ -1,7 +1,7 @@
-import apiKey from '../apiKey'
 import { formatFetchedData as format } from './helper'
 
 const endpoint = 'https://code-challenge.spectrumtoolbox.com/api'
+const apiKey = `Api-Key ${process.env.REACT_APP_API_KEY}`
 
 export const getData = async path => {
 	try {
