@@ -1,5 +1,7 @@
 # Welcome to Maître D'!
 
+## Checkout [maître d'](https://christopherchateau.github.io/maitre-d/) on GitHub Pages
+
 <img src="https://github.com/christopherchateau/maitre-d/blob/master/src/images/screenshots/fade-in.gif" width="600px" />
 
 ## Screenshots:
