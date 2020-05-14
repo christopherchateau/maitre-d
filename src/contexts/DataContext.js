@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { getData, getMockRestaurants } from '../utilities/apiCalls'
+import { getData } from '../utilities/apiCalls'
 import { defaultFilters } from '../data'
 
 export const DataContext = createContext()
@@ -18,8 +18,7 @@ const DataContextProvider = props => {
 
 	const loadData = async () => {
 		setRestaurants(
-			getMockRestaurants()
-			// await getData('restaurants')
+			await getData('restaurants')
 		)
 
 		defaultFilters.map(filter => updateFilters(filter))

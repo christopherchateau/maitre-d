@@ -13,11 +13,11 @@ const MenuControls = () => {
 		return unusedFilters
 	}, [])
 
-	const menus = Object.keys(filters).map(type => (
+	const menus = Object.keys(filters).map(type =>
 		<Menu
 			{...{ type, defaultOptions: defaultMenuOptions[type], key: type }}
 		/>
-	))
+	)
 
 	if (unusedFilters.length)
 		menus.push(
