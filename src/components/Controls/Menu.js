@@ -19,16 +19,17 @@ const Menu = ({ type, defaultOptions }) => {
 
 			: restaurants.reduce((formattedMenu, restaurant) => {
 
-					// collect all menu options without duplicates
-					restaurant[type].forEach(value => {
-						if (!menuOptions.includes(value)) {
-							menuOptions.push(value)
-							formattedMenu.push(formatMenuOption(value))
-						}
-					})
+				// collect all menu options without duplicates
+				restaurant[type].forEach(value => {
+					if (!menuOptions.includes(value)) {
+						menuOptions.push(value)
+						formattedMenu.push(formatMenuOption(value))
+					}
+				})
 
-					return formattedMenu
-			  }, [])
+				return formattedMenu
+
+			}, [])
 
 		const sortedMenu = sortByKey(formattedMenu)
 		const firstOption = addFilterMenu ? '' : 'All'
@@ -36,11 +37,10 @@ const Menu = ({ type, defaultOptions }) => {
 		return [formatMenuOption(firstOption), ...sortedMenu]
 	}
 
-	const formatMenuOption = str => (
+	const formatMenuOption = str =>
 		<option value={str} key={str}>
 			{str}
 		</option>
-	)
 
 	const handleBtnClick = () => removeFilter(type)
 
