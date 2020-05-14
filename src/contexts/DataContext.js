@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { getData } from '../utilities/apiCalls'
+import { getData, getMockRestaurants } from '../utilities/apiCalls'
 import { capitalizeFirstChar } from '../utilities/helper'
 import { availableFilters, defaultFilters, defaultMenuOptions } from '../data'
 
@@ -16,6 +16,7 @@ const DataContextProvider = props => {
 
 	const statesWithNoResults =
 		restaurants &&
+		restaurants.length &&
 		defaultMenuOptions.state.filter(
 			state =>
 				!restaurants.some(restaurant => restaurant.state[0] === state)
@@ -27,6 +28,7 @@ const DataContextProvider = props => {
 
 	const loadData = async () => {
 		setRestaurants(
+			// getMockRestaurants()
 			await getData('restaurants')
 		)
 
