@@ -86,6 +86,7 @@ const MenuTheme = styled.div`
 	}
 
 	select {
+		background: ${props => props.theme.color.white};
 		font-size: ${props => props.theme.font.size.medium};
 		height: ${props => props.theme.spacing.xxlarge};
 		max-width: 10rem;
@@ -104,6 +105,9 @@ const MenuTheme = styled.div`
 	}
 
 	button {
+		background: ${props => props.theme.color.lightgrey};
+		border: 1px solid ${props => props.theme.color.darkgrey};
+		border-radius: 2px;
 		cursor: pointer;
 		font-size: ${props => props.theme.font.size.small};
 		height: ${props => props.theme.spacing.xxlarge};

@@ -35,6 +35,9 @@ const PaginationControlsTheme = styled.div`
 	padding: ${props => props.theme.spacing.large};
 
 	button {
+		background: ${props => props.theme.color.lightgrey};
+		border: 1px solid ${props => props.theme.color.darkgrey};
+		border-radius: 2px;
 		font-size: ${props => props.theme.font.size.large};
 		padding: ${props => props.theme.spacing.small};
 		transition: all 0.5s ease-out;

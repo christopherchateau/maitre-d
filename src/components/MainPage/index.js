@@ -24,7 +24,6 @@ const MainPageTheme = styled.div`
 	max-width: ${props => props.theme.layout.pagewidth};
 	padding: ${props => props.theme.spacing.xlarge};
 	width: 90vw;
-	z-index: 5;
 
 	@media (max-width: ${props => props.theme.breakpoint.desktop}) {
 		padding: ${props => props.theme.spacing.medium};

@@ -11,7 +11,7 @@ const App = () => {
 
 	return (
 		<AppTheme>
-			<div className='overlay'></div>
+			<div className='background' />
 			{loading ? <Loading /> : errors ? <Errors /> : <MainPage />}
 		</AppTheme>
 	)
@@ -25,24 +25,22 @@ const AppTheme = styled.div`
 	}
 
 	align-items: center;
-	background-attachment: fixed;
-	background-image: url(${backgroundImg});
-	background-position: right;
-	background-repeat: no-repeat;
-	background-size: cover;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	min-height: 100vh;
 	position: relative;
 
-	.overlay {
-		background: ${props => props.theme.color.white};
-		height: 100%;
-		opacity: 0.3;
-		position: absolute;
+	.background {
+		background-image: url(${backgroundImg});
+		background-position: right;
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 100vh;
+		opacity: .6;
+		position: fixed;
 		top: 0;
 		width: 100%;
-		z-index: 1;
+		z-index: -1;
 	}
 `

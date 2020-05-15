@@ -57,6 +57,9 @@ const SearchControlsTheme = styled.form`
 	}
 
 	button {
+		background: ${props => props.theme.color.lightgrey};
+		border: 1px solid ${props => props.theme.color.darkgrey};
+		border-radius: 2px;
 		transition: all 0.5s ease-out;
 
 		&:hover:enabled {
