@@ -28,6 +28,35 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Stories
+
+• A user should be able to see the name, city, state, phone number, and genres for each restaurant
+• A user should see results sorted by name in alphabetical order starting with the beginning of the
+alphabet
+• A user should be able to filter restaurants by state. If a state is selected that does not contain any
+restaurants, there should be something that indicates no restaurants were found for that state.
+• A user should be able to filter by genre.
+• State and Genre filters should default to “All”
+• A user should be able to enter text into a search field. When hitting the enter key or clicking on a
+search button, the table should filter results. Search results should match either the name, city, or
+genre.
+• A user should be able to clear the search filter by clearing the text value in the search input.
+• A user should only see 10 results at a time and the table should be paginated.
+• A user should be able to combine filters and search. The user should be able to turn filters on and off
+while a search value is present.
+
+## Project Goals
+
+• No use of third party libraries for the table/filter/search. Using Create-React-App or Next.js as a
+starter kit is okay.
+• Well organized file structure
+• Descriptive naming conventions
+• DRY code that is readable and production ready
+• Reusable components
+• Sound logic for how the filters are architected
+• Styling follows a convention/pattern and is well organized
+• Full Git history with atomic commits
+
 ## Available Scripts
 
 In the project directory, you can run:
